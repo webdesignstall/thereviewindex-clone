@@ -3,7 +3,7 @@
 "use client"
 export default function ErrorPage({ error, reset }:any) {
     return (
-      <div className="h-screen flex flex-col items-center justify-center bg-gradient-to-r from-red-400 via-orange-500 to-yellow-500 text-white">
+      <div className="h-screen flex flex-col items-center justify-center text-white">
         <h1 className="text-5xl font-bold">Something Went Wrong</h1>
         <p className="mt-4 text-xl">Oops! There was an error with your request.</p>
         <button 
