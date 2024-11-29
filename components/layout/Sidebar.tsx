@@ -12,11 +12,11 @@ const topMenuItems = [
     { href: "/", label: "Home", icon: <Home className="h-5 w-5" /> },
     { href: "/reports", label: "Reports", icon: <ChartNoAxesColumnIncreasing className="h-5 w-5" /> },
     { href: "/search", label: "Search", icon: <Search className="h-5 w-5" /> },
-    { href: "/compare", label: "Scale", icon: <Scale className="h-5 w-5" /> },
+    { href: "/compare", label: "Compare", icon: <Scale className="h-5 w-5" /> },
 ];
 
 const footerMenuItems = [
-    { href: "/manage", label: "Manage", icon: <Wrench  className="h-5 w-5" /> },
+    { href: "/manage", label: "Manage", icon: <Wrench className="h-5 w-5" /> },
     { href: "/settings", label: "Settings", icon: <Settings className="h-5 w-5" /> },
     { href: "/help", label: "Help", icon: <CircleHelp className="h-5 w-5" /> },
     { href: "/logout", label: "Logout", icon: <LogOut className="h-5 w-5" /> }
