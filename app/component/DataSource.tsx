@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button'
+import { ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
+import { PlanChart } from './PlanChart'
 
 export default function DataSource() {
     return (
@@ -25,10 +27,10 @@ export default function DataSource() {
                                         </div>
                                     </div>
                                     <div className='flex justify-center'>
-                                        <a className='link-blue flex items-center text-sm' href="">Learn More</a>
+                                        <a className='link-blue flex items-center text-sm text-blue-700' href="">Learn More <span><ChevronRight /></span></a>
                                     </div>
                                     <div className='flex flex-col gap-4 md:flex-row-reverse'>
-                                        <Button>
+                                        <Button size='sm' className='font-semibold'>
                                             Create Data Source +
                                         </Button>
                                     </div>
@@ -47,18 +49,18 @@ export default function DataSource() {
                 </div>
                 <div className='max-w-md'>
                     <div className='relative w-full h-full border  rounded-md overflow-auto px-4 py-5 sm:p-5 '>
-                        <div className='flex flex-col divide-y divide-primary'>
+                        <div className='flex flex-col divide-y divide-primar divide-gray-700'>
                             <div className=' text-center py-6'>
                                 <div className='flex w-full h-full items-center'>
                                     <div className='m-auto'>
-                                        <div className='header-gray mb-1'> Current Plan</div>
-                                        <div className='mb-1 header-3'>Trial</div>
+                                        <div className='header-gray mb-1 dark:text-gray-300 uppercase text-sm'> Current Plan</div>
+                                        <div className='mb-1 header-3 scroll-m-20 text-2xl font-semibold tracking-tight'>Trial</div>
                                     </div>
                                 </div>
                             </div>
                             <div className='py-6'>
-                                <div className='w-28 mb-6 m-auto'>
-
+                                <div className=''>
+                                    <PlanChart />
                                 </div>
                                 <div>
                                     <div className="ml-8 grid grid-cols-2 gap-2 text-sm">
@@ -77,7 +79,7 @@ export default function DataSource() {
                                 </div>
                             </div>
                             <div className='py-3 flex justify-center items-center'>
-                                <Button>Manage</Button>
+                                <Button size='sm' className='font-semibold'>Manage</Button>
                             </div>
                         </div>
                     </div>

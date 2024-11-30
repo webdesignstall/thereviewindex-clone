@@ -26,7 +26,7 @@ export default function Bookmarks() {
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-4 md:flex-row-reverse">
-                                    <Button>Go To Reports</Button>
+                                    <Button className='font-semibold' size='sm'>Go To Reports</Button>
                                 </div>
                             </div>
                         </div>
