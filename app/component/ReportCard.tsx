@@ -16,7 +16,7 @@ export default function ReportCard() {
                                     <Image
                                         className=''
                                         width={150}
-                                        height={200}
+                                        height={250}
                                         src={item.image}
                                         alt='Image band'
                                     />
@@ -26,7 +26,7 @@ export default function ReportCard() {
                                         <p className='text-lg font-semibold pb-2'>{item.title}</p>
                                         {
                                             item.subTitle.map((subTitle, index) => (
-                                                <Badge variant='secondary'>{subTitle}</Badge>
+                                                <Badge key={index} variant='secondary'>{subTitle}</Badge>
                                             ))
                                         }
                                     </div>

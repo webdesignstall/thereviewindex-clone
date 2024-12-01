@@ -80,3 +80,7 @@ body {
 body{
   font-family: "Roboto","Open Sans", sans-serif;
 }
+
+.child-4{
+  flex-grow: 1;
+}

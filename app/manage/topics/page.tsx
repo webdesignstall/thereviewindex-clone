@@ -27,6 +27,9 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { FileImage, HelpCircle } from 'lucide-react'
+import Image from 'next/image'
+import { CreateTopics } from './component/CreateTopics'
 
 const invoices = [
     {
@@ -80,14 +83,16 @@ export default function Topics() {
                 <div className='flex justify-between items-center pb-8'>
                     <div className='text-2xl font-semibold'>Topics</div>
                     <div>
-                        <Button className='font-semibold'>Add Topics</Button>
+                        <CreateTopics />
                     </div>
                 </div>
                 <div>
                     <Tabs defaultValue="account" className="">
-                        <TabsList className={cn('bg-transparent')}>
-                            <TabsTrigger className='' value="account">User Topics</TabsTrigger>
-                            <TabsTrigger className='' value="password">System Topics</TabsTrigger>
+                        <TabsList className={cn('bg-transparent pb-8')}>
+                            <TabsTrigger className='data-[state=active]:border-b-[3px] data-[state=active]:border-gray-300 border-transparent
+                             border-b-[3px]' value="account">User Topics <span className='ml-2'> <HelpCircle size={15} /> </span></TabsTrigger>
+                            <TabsTrigger className='data-[state=active]:border-b-[3px] data-[state=active]:border-gray-300 border-transparent
+                             border-b-[3px]' value="password">System Topics <span className='ml-2'> <HelpCircle size={15} /> </span></TabsTrigger>
                         </TabsList>
                         <TabsContent value="account">
                             <Card>
@@ -98,9 +103,10 @@ export default function Topics() {
                                     </CardDescription>
                                 </CardHeader>
                                 <CardContent className="">
-                                    <div className='p-8 flex flex-col justify-center items-center'>
-                                        <p className='text-2xl font-semibold'>No Manual topics found</p>
-                                        <p>you have not add any topics</p>
+                                    <div className='p-8 flex flex-col space-y-2 justify-center items-center'>
+                                        <FileImage size={60} />
+                                        <p className='text-xl font-medium'>No Manual topics found</p>
+                                        <p>you've not added any manual topics yet.</p>
                                     </div>
                                 </CardContent>
                                 <CardFooter className='hidden'>

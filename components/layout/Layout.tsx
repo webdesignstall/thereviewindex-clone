@@ -21,7 +21,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className='flex h-screen overflow-hidden print:overflow-visible bg-background print:h-auto print:w-full '>
                     <div className='relative hidden md:flex md:flex-shrink-0 border-r print:hidden group duration-75 w-16'>
                         <aside className="w-16">
-                            <nav className="flex flex-col items-center gap-3 px-1 py-4">
+                            <nav className="flex flex-col items-center gap-3 px-1 py-4 h-full">
                                 <Link
                                     href="#"
                                     className="group flex h-9 w-10 shrink-0 items-center justify-center gap-2 rounded-lg bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base bg-white"
@@ -31,11 +31,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 </Link>
                                 <TooltipProvider>
                                     {topMenuItems.map((item, index) => (
-                                        <Tooltip key={item.label}>
-                                            <TooltipTrigger onClick={() => setActiveItem(topMenuItems[index].menu)} asChild>
+                                        <Tooltip key={index}>
+                                            <TooltipTrigger className={index === 4 ? 'flex-grow' : ''} onClick={() => setActiveItem(topMenuItems[index].menu)} asChild>
                                                 <Link
                                                     href={item.href}
-                                                    className="flex h-12 items-center justify-center rounded-lg text-muted-foreground transition-colors dark:text-white dark:hover:bg-neutral-900 w-full"
+                                                    className={index === 4 ? '': `flex h-12 items-center justify-center rounded-lg text-muted-foreground transition-colors dark:text-white dark:hover:bg-neutral-900 w-full`}
                                                 >
                                                     {item.icon}
                                                     <span className="sr-only">{item.label}</span>
@@ -44,13 +44,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                             <TooltipContent className='text-sm' side="right">{item.label}</TooltipContent>
                                         </Tooltip>
                                     ))}
+                            
                                 </TooltipProvider>
                             </nav>
                         </aside>
 
                     </div>
-                    <div className='flex flex-col w-0 flex-1 print:w-full'>
-                        <main className='hidden md:block flex-grow overflow-auto overflow-x-hidden focus:outline-none print:block print:w-screen  print:overflow-visible print:h-auto '>
+                    <div className='flex flex-col flex-1 print:w-full'>
+                        <main className='md:block flex-grow overflow-auto overflow-x-hidden focus:outline-none print:block print:w-screen  print:overflow-visible print:h-auto '>
                             <div className='h-screen flex overflow-hidden print:overflow-visible print:h-auto bg-background'>
                                 <div className={`absolute md:static z-30 h-full inset-y-0 right-0 max-w-3xs overflow-hidden ${parseInt(activeItem?.length) > 0 ? 'w-56' : 'w-0'}`}>
                                     <ul className='border-r border-gray-800 h-screen'>
@@ -59,7 +60,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         </li>
                                         {
                                             activeItem?.map((item: any, index: number) => (
-                                                <li key={index.toString()} className=''><Link className=' hover:bg-neutral-700 duration-200 cursor-pointer p-2 text-sm text-neutral-400 hover:text-neutral-50 block' href={item.link}>{item.title}</Link></li>
+                                                <li key={index} className=''><Link className=' hover:bg-neutral-700 duration-200 cursor-pointer p-2 text-sm text-neutral-400 hover:text-neutral-50 block' href={item.link}>{item.title}</Link></li>
                                             ))
                                         }
                                     </ul>
@@ -122,6 +123,11 @@ const topMenuItems = [
         href: "/compare",
         label: "Compare",
         icon: <Scale className="h-5 w-5" />,
+    },
+    {
+        href: "",
+        label: "",
+        icon: '',
     },
     {
         href: "/manage/data-sources",
