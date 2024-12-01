@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
 import {
     Tabs,
     TabsContent,
@@ -16,6 +17,7 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 import { cn } from "@/lib/utils"
+import { Star } from "lucide-react"
 
 export function Comment() {
     return (
@@ -41,27 +43,29 @@ export function Comment() {
                 </TabsTrigger>
             </TabsList>
             <TabsContent value="all">
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Account</CardTitle>
-                        <CardDescription>
-                            Make changes to your account here. Click save when you're done.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-2">
-                        <div className="space-y-1">
-                            <Label htmlFor="name">Name</Label>
-                            <Input id="name" defaultValue="Pedro Duarte" />
+                <div>
+                    <div>
+                        <div className="flex justify-start items-center space-x-3">
+                            <Switch />
+                            <span>Full</span>
                         </div>
-                        <div className="space-y-1">
-                            <Label htmlFor="username">Username</Label>
-                            <Input id="username" defaultValue="@peduarte" />
+                        <div className="pt-6">
+                            {
+                                [1,2,3,4].map((_,index) =>(
+                                    <div className="py-3" key={index} >
+                                        <div className="flex pb-2">
+                                            <div className="flex pr-3"><Star /><Star /><Star /><Star /><Star /></div>
+                                            <div>This monitor will not work with other Dell monitores that have display ports.</div>
+                                        </div>
+                                        <div>
+                                            This monitor well not wok with other Dell monitores that have display parts out, even with a display port/HDMI cable. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur quisquam perspiciatis dolorum ullam nisi illo, distinctio quasi nobis tempora error. Vero velit sint facilis tempora corporis quasi libero nostrum fugiat repudiandae similique. Asperiores mollitia illo commodi excepturi est dignissimos rerum, laboriosam eveniet, obcaecati temporibus ex quaerat praesentium.
+                                        </div>
+                                    </div>
+                                ))
+                            }
                         </div>
-                    </CardContent>
-                    <CardFooter>
-                        <Button>Save changes</Button>
-                    </CardFooter>
-                </Card>
+                    </div>
+                </div>
             </TabsContent>
             <TabsContent value="positive">
                 <Card>
