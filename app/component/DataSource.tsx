@@ -11,8 +11,8 @@ export default function DataSource() {
                 <div className='w-full max-w-4xl md:mr-10'>
                     <div className='border  rounded-md flex flex-col h-full '>
                         <div className='w-full h-full flex flex-col overflow-auto'>
-                            <div className='px-5 flex justify-between '>
-                                <div className='flex flex-col w-full space-y-2 p-6 justify-start items-start text-left'>
+                            <div className='md:px-5 px-3 flex justify-between '>
+                                <div className='flex flex-col w-full space-y-2 md:p-6 p-4 justify-start items-start text-left'>
                                     <div>
                                         <span>
                                             <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" className="h-10 w-10 text-gray-400 dark:text-gray-500" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"></path></svg>
@@ -47,10 +47,10 @@ export default function DataSource() {
                         </div>
                     </div>
                 </div>
-                <div className='max-w-md'>
+                <div className='lg:max-w-md min-w-max'>
                     <div className='relative w-full h-full border  rounded-md overflow-auto px-4 py-5 sm:p-5 '>
                         <div className='flex flex-col divide-y divide-primar divide-gray-700'>
-                            <div className=' text-center py-6'>
+                            <div className=' text-center md:py-6 py-2'>
                                 <div className='flex w-full h-full items-center'>
                                     <div className='m-auto'>
                                         <div className='header-gray mb-1 dark:text-gray-300 uppercase text-sm'> Current Plan</div>

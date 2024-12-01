@@ -9,6 +9,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Switch } from '@/components/ui/switch'
+import { Dark } from '@/components/dark'
 
 export default function Preferences() {
     return (
@@ -93,7 +94,7 @@ export default function Preferences() {
                                     <p className='text-gray-500 italic font-medium'>Turn on dark theme for the entire app.</p>
                                 </div>
                                 <div>
-                                <Switch id="airplane-mode" />
+                                <Dark />
                                 </div>
                             </div>
                         </div>

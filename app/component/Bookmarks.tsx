@@ -11,7 +11,7 @@ export default function Bookmarks() {
                             <div className="flex flex-col space-y-3">
                                 <div className=" w-full font-semibold flex text-primary tracking-tight  text-lg-r text-left justify-start">Bookmarks</div>
                                 <div className=" text-secondary w-full font-normal flex text-sm-r text-left justify-start">
-                                    To add bookmarks, click on the bookmark icon at the top-right of each report.
+                                    <p className='dark:text-gray-200 text-gray-800'>To add bookmarks, click on the bookmark icon at the top-right of each report.</p>
                                 </div>
                             </div>
                         </div>
@@ -21,7 +21,7 @@ export default function Bookmarks() {
                                     <div className=" text-xl font-semibold text-black dark:text-white">
                                         No Bookmarks
                                     </div>
-                                    <div className=" text-sm text-gray-700 dark:text-gray-300">
+                                    <div className=" text-sm text-gray-800 dark:text-gray-200">
                                         To add bookmarks, click on the bookmark icon at the top-right of each report.
                                     </div>
                                 </div>

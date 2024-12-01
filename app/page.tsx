@@ -10,7 +10,7 @@ import Bookmarks from './component/Bookmarks'
 
 export default function Homepage() {
   return (
-    <div>
+    <div className='pb-12'>
       <div>
         {/* Adding animation for the heading */}
         <motion.div
@@ -18,9 +18,9 @@ export default function Homepage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className='py-6'>
-            <h2 className="w-full font-semibold flex text-primary tracking-tight text-2xl text-left justify-start pb-4">Welcome ASIM!</h2>
-            <p className='text-secondary w-full font-normal flex text-sm-r text-left justify-start dark:text-white'>It's always great to see you here.</p>
+          <div className='md:py-6 py-2'>
+            <h2 className="w-full font-semibold flex text-primary tracking-tight text-3xl text-left justify-start pb-2">Welcome ASIM!</h2>
+            <p className='text-gray-700 w-full font-normal flex text-sm-r text-left justify-start dark:text-white'>It's always great to see you here.</p>
           </div>
         </motion.div>
 

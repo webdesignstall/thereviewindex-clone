@@ -53,7 +53,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <div className='flex flex-col flex-1 print:w-full'>
                         <main className='md:block flex-grow overflow-auto overflow-x-hidden focus:outline-none print:block print:w-screen  print:overflow-visible print:h-auto '>
                             <div className='h-screen flex overflow-hidden print:overflow-visible print:h-auto bg-background'>
-                                <div className={`absolute md:static z-30 h-full inset-y-0 right-0 max-w-3xs overflow-hidden ${parseInt(activeItem?.length) > 0 ? 'w-56' : 'w-0'}`}>
+                                <div className={`absolute md:static z-30 h-full hidden lg:inline-block inset-y-0 right-0 max-w-3xs overflow-hidden ${parseInt(activeItem?.length) > 0 ? 'w-56' : 'w-0'}`}>
                                     <ul className='border-r border-gray-800 h-screen'>
                                         <li className='py-4 cursor-pointer flex justify-end items-center'>
                                         <ChevronLeft  className='border border-gray-800 rounded-l-2xl w-12 text-gray-400 hover:text-gray-50 duration-200' size={30} />
@@ -69,7 +69,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     <main className='flex-grow overflow-auto overflow-x-hidden focus:outline-none print:block print:w-screen print:h-auto print:overflow-visible'>
                                         <div className=''>
                                             <Navbar />
-                                            <div className='p-8'>
+                                            <div className='md:p-8 p-3'>
                                                 {children}
                                             </div>
                                         </div>
