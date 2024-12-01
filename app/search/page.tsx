@@ -1,10 +1,11 @@
 import { Input } from '@/components/ui/input'
 import { HelpCircle, SearchIcon } from 'lucide-react'
 import React from 'react'
+import { Comment } from './component/Comment'
 
 export default function Search() {
   return (
-    <div>
+    <div className='max-w-screen-2xl m-auto'>
       <div className='pb-6'>
         <div className='flex gap-1 justify-start items-center'>
           <div className='border text-md font-semibold p-2'>Dell (Brand)- Amazon US</div>
@@ -24,17 +25,24 @@ export default function Search() {
               <HelpCircle />
             </div>
           </div>
-          <div className='p-2 w-full grid grid-cols-10'>
-            <div className='flex justify-center items-center col-span-7 border-r-2'>
-              <div className='border p-4 w-44 bg-neutral-900'>All</div>
-              <div className='border p-4 w-44 bg-neutral-900'>Positive</div>
-              <div className='border p-4 w-44 bg-neutral-900'>Negative</div>
+          <div className='grid grid-cols-3'>
+            <div className='border-r col-span-2'>
+              <Comment />
             </div>
-            <div className=''>
-              <div className='flex justify-center items-center col-span-3'>
-                <div className='border p-4 w-44 bg-neutral-900 text-center'>All</div>
-                <div className='border p-4 w-44 bg-neutral-900 text-center'>Positive</div>
-                <div className='border p-4 w-44 bg-neutral-900 text-center'>Negative</div>
+            <div>
+              <div className='grid grid-cols-3 p-2'>
+                <div className='border w-full h-16 justify-center items-center flex rounded-md flex-col'>
+                  <p className='text-sm text-gray-400'>POSITIVE</p>
+                  <p>1500</p>
+                </div>
+                <div className='border w-full h-16 justify-center items-center flex rounded-md flex-col'>
+                  <p className='text-sm text-gray-400'>POSITIVE</p>
+                  <p>1500</p>
+                </div>
+                <div className='border w-full h-16 justify-center items-center flex rounded-md flex-col'>
+                  <p className='text-sm text-gray-400'>POSITIVE</p>
+                  <p>1500</p>
+                </div>
               </div>
             </div>
           </div>

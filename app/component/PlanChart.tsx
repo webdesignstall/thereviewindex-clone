@@ -34,7 +34,7 @@ const chartConfig = {
 
 export function PlanChart() {
   return (
-    <Card className="flex flex-col border-none pb-4">
+    <Card className="flex flex-col border-none pb-2">
       <CardHeader className="items-center pb-0 hidden">
         <CardTitle>Radial Chart - Text</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
@@ -42,13 +42,13 @@ export function PlanChart() {
       <CardContent className="flex-1 pb-0">
         <ChartContainer
           config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
+          className="mx-auto aspect-square max-h-[120px]"
         >
           <RadialBarChart
             data={chartData}
             startAngle={0}
-            endAngle={100}
-            innerRadius={80}
+            endAngle={0}
+            innerRadius={0}
             outerRadius={110}
           >
             <PolarGrid
@@ -56,7 +56,7 @@ export function PlanChart() {
               radialLines={false}
               stroke="none"
               className="first:fill-muted last:fill-background"
-              polarRadius={[86, 74]}
+              polarRadius={[50, 40]}
             />
             <RadialBar dataKey="visitors" background cornerRadius={10} />
             <PolarRadiusAxis tick={false} tickLine={false} axisLine={false}>
@@ -75,7 +75,7 @@ export function PlanChart() {
                           y={viewBox.cy}
                           className="fill-foreground text-2xl font-bold"
                         >
-                          {chartData[0].visitors.toLocaleString()} %
+                          {chartData[0].visitors.toLocaleString()}%
                         </tspan>
                       </text>
                     )
