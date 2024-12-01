@@ -104,7 +104,7 @@ export default function Topics() {
                                 </CardHeader>
                                 <CardContent className="">
                                     <div className='p-8 flex flex-col space-y-2 justify-center items-center'>
-                                        <FileImage size={60} />
+                                        <FileImage className='text-gray-400' size={60} />
                                         <p className='text-xl font-medium'>No Manual topics found</p>
                                         <p>you've not added any manual topics yet.</p>
                                     </div>

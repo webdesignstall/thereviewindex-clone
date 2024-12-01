@@ -1,47 +1,49 @@
-import { Badge } from '@/components/ui/badge'
-import { ArrowRight, MoveRight } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
-import React from 'react'
+import * as React from "react"
+import Image from "next/image"
+
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
 export default function ReportCard() {
     return (
-        <>
-            <div className='grid lg:grid-cols-3 border p-8 gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-4 2xl:grid-cols-6 mb-12 overflow-x-auto'>
-                {
-                    items.map((item, index) => (
-                        <div key={index} className='border rounded-lg overflow-hidden'>
-                            <div className='w-64 h-full  shrink-0 rounded-lg relative border cursor-pointer duration-100'>
-                                <div className='flex flex-col justify-center items-center bg-gray-900'>
-                                    <Image
-                                        className=''
-                                        width={150}
-                                        height={250}
-                                        src={item.image}
-                                        alt='Image band'
-                                    />
-                                </div>
-                                <div className='w-full h-1/2 rounded-b-md flex flex-col justify-between p-4'>
-                                    <div className='py-3 pb-8'>
-                                        <p className='text-lg font-semibold pb-2'>{item.title}</p>
-                                        {
-                                            item.subTitle.map((subTitle, index) => (
-                                                <Badge key={index} variant='secondary'>{subTitle}</Badge>
-                                            ))
-                                        }
-                                    </div>
-                                    <div className='text-sm text-blue-theme font-medium mt-2'>
-                                        <Link className='text-blue-500 flex justify-start items-center' href='#'>See Demo Report <span className='pl-4'><ArrowRight size={15} /></span></Link>
-                                    </div>
-                                </div>
-                            </div>
+        <ScrollArea className="rounded-md border w-[90vw]">
+            <div className="flex space-x-4 p-8">
+                {items.map((artwork, index) => (
+                    <figure key={index} className="border w-64 h-auto">
+                        <div className="overflow-hidden flex justify-center items-center rounded-md p-6 bg-slate-200 dark:bg-neutral-800">
+                            <Image
+                                src={artwork.image}
+                                alt={`Photo by ${artwork.title}`}
+                                className=" h-fit w-fit object-cover"
+                                width={300}
+                                height={300}
+                            />
                         </div>
-                    ))
-                }
+                        <figcaption className="p-2 text-xs text-muted-foreground border h-44 flex flex-col justify-between">
+                            <div>
+                                <h2 className="text-lg font-medium pb-3">{artwork.title}</h2>
+                                <div className="flex">
+                                    {
+                                        artwork?.subTitle?.map((subtitle) => (
+                                            <Badge variant='secondary'>{subtitle}</Badge>
+                                        ))
+                                    }
+                                </div>
+
+                            </div>
+                            <div className="">
+                                <Link href='/' className="text-blue-600 font-medium p-3 flex">See Demo Report</Link>
+                            </div>
+                        </figcaption>
+                    </figure>
+                ))}
             </div>
-        </>
+            <ScrollBar orientation="horizontal" />
+        </ScrollArea>
     )
 }
+
 
 
 const items = [
