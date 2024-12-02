@@ -60,7 +60,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         </li>
                                         {
                                             activeItem?.map((item: any, index: number) => (
-                                                <li key={index} className=''><Link className=' hover:bg-neutral-700 duration-200 cursor-pointer p-2 text-sm text-neutral-400 hover:text-neutral-50 block' href={item.link}>{item.title}</Link></li>
+                                                <li key={index} className=''><Link className={`hover:bg-neutral-700 duration-200 cursor-pointer p-2 text-sm text-neutral-400 hover:text-neutral-50 block`} href={item.link}>{item.title}</Link></li>
                                             ))
                                         }
                                     </ul>
@@ -109,8 +109,8 @@ const topMenuItems = [
                 link: '/reports/sentiment-volume-report'
             },
             {
-                title: 'Brand Report',
-                link: '/compare/brand-report'
+                title: 'Product Report',
+                link: '/reports/product-report'
             },
         ]
     },

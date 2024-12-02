@@ -65,8 +65,8 @@ import {
       <Table>
         <TableCaption>A summary of topic discussions, feedback, and impact scores.</TableCaption>
         <TableHeader>
-          <TableRow>
-            <TableHead className="w-[200px]">Topic</TableHead>
+          <TableRow className="uppercase bg-neutral-800">
+            <TableHead>Topic</TableHead>
             <TableHead>Records</TableHead>
             <TableHead>Positive Count</TableHead>
             <TableHead>Chart Line</TableHead>
