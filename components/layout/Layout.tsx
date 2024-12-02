@@ -92,21 +92,21 @@ const topMenuItems = [
         icon: <Home className="h-5 w-5" />
     },
     {
-        href: "/reports",
+        href: "/reports/brand-report",
         label: "Reports",
         icon: <ChartNoAxesColumnIncreasing className="h-5 w-5" />,
         menu: [
             {
                 title: 'Brand Report',
-                link: '/compare/brand-report'
+                link: '/reports/brand-report'
             },
             {
                 title: 'Topics Table',
-                link: '/compare/topics-table'
+                link: '/reports/topics-table'
             },
             {
                 title: 'Sentiment-Volume Report',
-                link: '/compare/sentiment-volume-report'
+                link: '/reports/sentiment-volume-report'
             },
             {
                 title: 'Brand Report',

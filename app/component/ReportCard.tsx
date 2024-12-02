@@ -4,6 +4,7 @@ import Image from "next/image"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
 export default function ReportCard() {
     return (
@@ -11,7 +12,7 @@ export default function ReportCard() {
             <div className="flex space-x-4 p-8">
                 {items.map((artwork, index) => (
                     <figure key={index} className="border w-64 h-auto">
-                        <div className="overflow-hidden flex justify-center items-center rounded-md p-6 bg-slate-200 dark:bg-neutral-800">
+                        <div className="overflow-hidden flex justify-center items-center rounded-md p-6 bg-white dark:bg-neutral-800">
                             <Image
                                 src={artwork.image}
                                 alt={`Photo by ${artwork.title}`}
@@ -25,15 +26,15 @@ export default function ReportCard() {
                                 <h2 className="text-lg font-medium pb-3">{artwork.title}</h2>
                                 <div className="flex">
                                     {
-                                        artwork?.subTitle?.map((subtitle) => (
-                                            <Badge variant='secondary'>{subtitle}</Badge>
+                                        artwork?.subTitle?.map((subtitle,index) => (
+                                            <Badge key={index} variant='secondary'>{subtitle}</Badge>
                                         ))
                                     }
                                 </div>
 
                             </div>
                             <div className="">
-                                <Link href='/' className="text-blue-600 font-medium p-3 flex">See Demo Report</Link>
+                                <Link href='/reports/brand-report' className="text-blue-500 font-semibold p-3 flex items-center justify-start space-x-3">See Demo Report <span><ArrowRight size={15} className="ml-2" /></span></Link>
                             </div>
                         </figcaption>
                     </figure>
