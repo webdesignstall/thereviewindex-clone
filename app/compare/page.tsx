@@ -1,146 +1,195 @@
-"use client"
-
-import * as React from "react"
-import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
-
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
-const chartData = [
-  { date: "2024-04-01", desktop: 222, mobile: 150 },
-  { date: "2024-04-02", desktop: 97, mobile: 180 },
-  { date: "2024-04-03", desktop: 167, mobile: 120 },
-  { date: "2024-04-04", desktop: 242, mobile: 260 },
-  { date: "2024-04-05", desktop: 373, mobile: 290 },
-  { date: "2024-04-06", desktop: 301, mobile: 340 },
-  { date: "2024-04-07", desktop: 245, mobile: 180 },
-  { date: "2024-04-08", desktop: 409, mobile: 320 },
-  { date: "2024-04-09", desktop: 59, mobile: 110 },
-  { date: "2024-04-10", desktop: 261, mobile: 190 },
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import BarChart from "./component/BarChart"
+import { CsatChart } from "./component/CsatChart"
+import { LineChartYear } from "./component/LineChart"
+import { RatingChart } from "./component/RatingChart"
+import StraightLineChart from "./component/1080"
 
 
-
+const invoices = [
+  {
+    invoice: "INV001",
+    paymentStatus: "Paid",
+    totalAmount: "$250.00",
+    paymentMethod: "Credit Card",
+  },
+  {
+    invoice: "INV002",
+    paymentStatus: "Pending",
+    totalAmount: "$150.00",
+    paymentMethod: "PayPal",
+  },
+  {
+    invoice: "INV003",
+    paymentStatus: "Unpaid",
+    totalAmount: "$350.00",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    invoice: "INV004",
+    paymentStatus: "Paid",
+    totalAmount: "$450.00",
+    paymentMethod: "Credit Card",
+  },
+  {
+    invoice: "INV005",
+    paymentStatus: "Paid",
+    totalAmount: "$550.00",
+    paymentMethod: "PayPal",
+  },
+  {
+    invoice: "INV006",
+    paymentStatus: "Pending",
+    totalAmount: "$200.00",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    invoice: "INV007",
+    paymentStatus: "Unpaid",
+    totalAmount: "$300.00",
+    paymentMethod: "Credit Card",
+  },
 ]
 
-const chartConfig = {
-  views: {
-    label: "Page Views",
-  },
-  desktop: {
-    label: "Desktop",
-    color: "hsl(var(--chart-1))",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "hsl(var(--chart-2))",
-  },
-} satisfies ChartConfig
-
 export default function Compare() {
-  const [activeChart, setActiveChart] =
-    React.useState<keyof typeof chartConfig>("desktop")
-
-  const total = React.useMemo(
-    () => ({
-      desktop: chartData.reduce((acc, curr) => acc + curr.desktop, 0),
-      mobile: chartData.reduce((acc, curr) => acc + curr.mobile, 0),
-    }),
-    []
-  )
-
   return (
-    <Card>
-      <CardHeader className="flex flex-col items-stretch space-y-0 border-b p-0 sm:flex-row">
-        <div className="flex flex-1 flex-col justify-center gap-1 px-6 py-5 sm:py-6">
-          <CardTitle>Line Chart - Interactive</CardTitle>
-          <CardDescription>
-            Showing total visitors for the last 3 months
-          </CardDescription>
-        </div>
-        <div className="flex">
-          {["desktop", "mobile"].map((key) => {
-            const chart = key as keyof typeof chartConfig
-            return (
-              <button
-                key={chart}
-                data-active={activeChart === chart}
-                className="flex flex-1 flex-col justify-center gap-1 border-t px-6 py-4 text-left even:border-l data-[active=true]:bg-muted/50 sm:border-l sm:border-t-0 sm:px-8 sm:py-6"
-                onClick={() => setActiveChart(chart)}
-              >
-                <span className="text-xs text-muted-foreground">
-                  {chartConfig[chart].label}
-                </span>
-                <span className="text-lg font-bold leading-none sm:text-3xl">
-                  {total[key as keyof typeof total].toLocaleString()}
-                </span>
-              </button>
-            )
-          })}
-        </div>
-      </CardHeader>
-      <CardContent className="px-2 sm:p-6">
-        <ChartContainer
-          config={chartConfig}
-          className="aspect-auto h-[250px] w-full"
-        >
-          <LineChart
-            accessibilityLayer
-            data={chartData}
-            margin={{
-              left: 12,
-              right: 12,
-            }}
-          >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="date"
-              tickLine={false}
-              axisLine={false}
-              tickMargin={8}
-              minTickGap={32}
-              tickFormatter={(value) => {
-                const date = new Date(value)
-                return date.toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                })
-              }}
-            />
-            <ChartTooltip
-              content={
-                <ChartTooltipContent
-                  className="w-[150px]"
-                  nameKey="views"
-                  labelFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })
-                  }}
-                />
-              }
-            />
-            <Line
-              dataKey={activeChart}
-              type="monotone"
-              stroke={`var(--color-${activeChart})`}
-              strokeWidth={2}
-              dot={false}
-            />
-          </LineChart>
-        </ChartContainer>
-      </CardContent>
-    </Card>
+    <Table>
+      <TableHeader>
+        <TableRow className="bg-neutral-800">
+          <TableHead></TableHead>
+          <TableHead>Dell (Brand)-Amazon</TableHead>
+          <TableHead>Select Product</TableHead>
+          <TableHead>Select Product</TableHead>
+          <TableHead>Select Product</TableHead>
+          <TableHead>Select Product</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        <TableRow>
+          <TableCell>RECORS</TableCell>
+          <TableCell>33711</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>CSAT RATOMG</TableCell>
+          <TableCell>78.1</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>MARKETPLACE STAR RATING</TableCell>
+          <TableCell>4.2</TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>RECORDS TREND</TableCell>
+          <TableCell colSpan={5}>
+            <LineChartYear />
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>TOPIC VALUME</TableCell>
+          <TableCell colSpan={5}>
+            <BarChart />
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>CSAT TREND</TableCell>
+          <TableCell colSpan={5}>
+            <CsatChart />
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>STAR RATING TREND</TableCell>
+          <TableCell colSpan={5}>
+            <RatingChart />
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>1080</TableCell>
+          <TableCell>
+            <div className="w-[300px] h-1 flex">
+              <div className="w-[80%] h-full bg-red-500 flex pt-2">80%</div>
+              <div className="w-[20%] h-full bg-green-500 flex pt-2">20% </div>
+            </div>
+            <div className="grid grid-cols-3 pt-8 gap-1">
+              <div className="border p-2 h-20">MENTIONS</div>
+              <div className="border p-2 h-20">CSAT</div>
+              <div className="border p-2 h-20">AVG. RATING</div>
+              <div className="border p-2 h-20 col-span-3">
+                IPACT SCORE
+              </div>
+            </div>
+          </TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+        </TableRow>        <TableRow>
+          <TableCell>2160</TableCell>
+          <TableCell>
+            <div className="w-[300px] h-1 flex">
+              <div className="w-[80%] h-full bg-red-500 flex pt-2">80%</div>
+              <div className="w-[20%] h-full bg-green-500 flex pt-2">20% </div>
+            </div>
+            <div className="grid grid-cols-3 pt-8 gap-1">
+              <div className="border p-2 h-20">MENTIONS</div>
+              <div className="border p-2 h-20">CSAT</div>
+              <div className="border p-2 h-20">AVG. RATING</div>
+              <div className="border p-2 h-20 col-span-3">
+                IPACT SCORE
+              </div>
+            </div>
+          </TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+        </TableRow>        <TableRow>
+          <TableCell>CLARITY</TableCell>
+          <TableCell>
+            <div className="w-[300px] h-1 flex">
+              <div className="w-[80%] h-full bg-red-500 flex pt-2">80%</div>
+              <div className="w-[20%] h-full bg-green-500 flex pt-2">20% </div>
+            </div>
+            <div className="grid grid-cols-3 pt-8 gap-1">
+              <div className="border p-2 h-20">MENTIONS</div>
+              <div className="border p-2 h-20">CSAT</div>
+              <div className="border p-2 h-20">AVG. RATING</div>
+              <div className="border p-2 h-20 col-span-3">
+                IPACT SCORE
+              </div>
+            </div>
+          </TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+          <TableCell></TableCell>
+        </TableRow>
+      </TableBody>
+      {/* <TableFooter>
+        <TableRow>
+          <TableCell colSpan={3}>Total</TableCell>
+          <TableCell className="text-right">$2,500.00</TableCell>
+        </TableRow>
+      </TableFooter> */}
+    </Table>
   )
 }
