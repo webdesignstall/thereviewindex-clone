@@ -1,16 +1,19 @@
 import React from 'react'
 import { ProductTable } from './component/ProductTable'
-// import WordCloudComponent from './component/WordCloud'
 import ReviewVolumeChart from './component/ReviewVolumeChart'
 import { CastChart } from './component/CsatChart'
 import { ReviewRatingChart } from './component/ReviewReatingChart'
-import SentimentBarChart from './component/TopicsChart'
 import ReviewStarsBarChart from './component/ReviewStartsChart'
 import TopicsTable from './component/TopicsTable'
 import DellChart from './component/DellChart'
 import { ArrowUp, ChevronUp, Dot, Download, Search, SearchIcon } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
+import TopicsChart from './component/TopicsChart'
+import WordCloud from './component/WordCloud'
+import { CreateBrand } from './component/CreateBrand'
+
+
 
 
 
@@ -19,6 +22,19 @@ import { Input } from '@/components/ui/input'
 
 
 export default function BrandReport() {
+    const wordData = [
+        { text: 'Next.js', value: 1000 },
+        { text: 'React', value: 900 },
+        { text: 'JavaScript', value: 850 },
+        { text: 'CSS', value: 700 },
+        { text: 'HTML', value: 650 },
+        { text: 'API', value: 600 },
+        { text: 'Web Development', value: 500 },
+        { text: 'Design', value: 400 },
+        { text: 'Performance', value: 300 },
+        { text: 'SEO', value: 200 },
+    ];
+
     return (
         <div>
             <div>
@@ -31,6 +47,7 @@ export default function BrandReport() {
                             <div className='flex gap-1 justify-start items-center'>
                                 <div className='border text-md font-semibold p-2'>Dell (Brand)- Amazon US</div>
                                 <div className='border text-sm font-medium'><SearchIcon size={40} className='p-2' /></div>
+                                <CreateBrand  />
                             </div>
                         </div>
                         <div>
@@ -106,12 +123,12 @@ export default function BrandReport() {
                             <div> <ReviewStarsBarChart /></div>
                             <div><CastChart /></div>
                             <div><ReviewRatingChart /></div>
-                            <div><SentimentBarChart /></div>
+                            <div><TopicsChart /></div>
                             <div>
-                                {/* <WordCloudComponent /> */}
+                                <WordCloud />
                             </div>
                             <div className='col-span-2'>
-                                <TopicsTable />
+                                {/* <TopicsTable /> */}
                             </div>
                             <div className='col-span-2'>
                                 <DellChart />
@@ -123,3 +140,5 @@ export default function BrandReport() {
         </div>
     )
 }
+
+
