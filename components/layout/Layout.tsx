@@ -9,6 +9,7 @@ import {
 import Link from 'next/link'
 import { Calendar, ChartNoAxesColumnIncreasing, ChevronLeft, CircleHelp, Home, LineChart, LogOut, Package, Package2, Scale, Search, Settings, ShoppingCart, Star, Timer, Users2, Wrench } from 'lucide-react'
 import Navbar from './Navbar'
+import Image from 'next/image'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [activeMenu, setActiveMenu] = useState<string | null>(null); // State to track active menu item
@@ -28,10 +29,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                             <nav className="flex flex-col items-center gap-3 px-1 py-4 h-full">
                                 <Link
                                     href="#"
-                                    className="group flex h-9 w-10 shrink-0 items-center justify-center gap-2 rounded-lg bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base bg-white"
+                                    className="group flex h-9 w-10 shrink-0 items-center justify-center gap-2 rounded-lg  text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
                                 >
-                                    <Star className="h-4 w-4 transition-all group-hover:scale-110 text-black" />
-                                    <span className="sr-only">Acme Inc</span>
+                                    <Image 
+                                    width={100}
+                                    height={100}
+                                    src='/tu-berlin-logo-long-red.svg'
+                                    alt='Logo'
+                                    />
                                 </Link>
                                 <TooltipProvider>
                                     {topMenuItems.map((item, index) => (
@@ -39,7 +44,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                             <TooltipTrigger className={index === 4 ? 'flex-grow' : ''} onClick={() => handleMenuClick(item.label, item.menu)} asChild>
                                                 <Link
                                                     href={item.href}
-                                                    className={` ${index === 4 ? '' : 'flex h-12 items-center justify-center rounded-lg text-muted-foreground transition-colors dark:text-white dark:hover:bg-neutral-900 w-full'}  ${activeMenu === item.label ? 'bg-neutral-800 text-white' : ''}`}
+                                                    className={` ${index === 4 ? '' : 'flex h-12 items-center justify-center rounded-lg transition-colors dark:text-white dark:hover:bg-neutral-900  w-full'}  ${activeMenu === item.label ? 'dark:bg-neutral-800 bg-neutral-200 text-black dark:text-white' : ''}`}
                                                 >
                                                     {item.icon}
                                                     <span className="sr-only">{item.label}</span>
@@ -57,14 +62,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                         <main className='md:block flex-grow overflow-auto overflow-x-hidden focus:outline-none print:block print:w-screen  print:overflow-visible print:h-auto '>
                             <div className='h-screen flex overflow-hidden print:overflow-visible print:h-auto bg-background'>
                                 <div className={`absolute md:static z-30 h-full hidden lg:inline-block inset-y-0 right-0 max-w-3xs overflow-hidden ${parseInt(activeItem?.length) > 0 ? 'w-56' : 'w-0'}`}>
-                                    <ul className='border-r border-gray-800 h-screen'>
+                                    <ul className='border-r dark:border-gray-800 h-screen'>
                                         <li className='py-4 cursor-pointer flex justify-end items-center'>
                                             <ChevronLeft className='border border-gray-800 rounded-l-2xl w-12 text-gray-400 hover:text-gray-50 duration-200' size={30} />
                                         </li>
                                         {
                                             activeItem?.map((item: any, index: number) => (
                                                 <li key={index} className=''>
-                                                    <Link className={`hover:bg-neutral-700 duration-200 cursor-pointer p-2 text-sm text-neutral-400 hover:text-neutral-50 block`} href={item.link}>{item.title}</Link>
+                                                    <Link className={`dark:hover:bg-neutral-700 hover:bg-neutral-200 duration-200 cursor-pointer p-2 text-sm dark:text-neutral-400 dark:hover:text-neutral-50 block`} href={item.link}>{item.title}</Link>
                                                 </li>
                                             ))
                                         }
