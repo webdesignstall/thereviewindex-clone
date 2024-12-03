@@ -1,6 +1,6 @@
 import React from 'react'
 import { ProductTable } from './component/ProductTable'
-import WordCloudComponent from './component/WordCloud'
+// import WordCloudComponent from './component/WordCloud'
 import ReviewVolumeChart from './component/ReviewVolumeChart'
 import { CastChart } from './component/CsatChart'
 import { ReviewRatingChart } from './component/ReviewReatingChart'
@@ -41,7 +41,7 @@ export default function BrandReport() {
                         </div>
                     </div>
                     <div>
-                        <div className='grid grid-cols-3 gap-3'>
+                        <div className='grid lg:grid-cols-3 grid-cols-1 gap-3'>
                             <div className='border rounded-md p-4'>
                                 <div>
                                     <div className='text-md font-medium pb-4'>Total Reviews</div>
@@ -101,14 +101,14 @@ export default function BrandReport() {
                         </div>
                     </div>
                     <div>
-                        <div className='grid grid-cols-2 gap-4'>
+                        <div className='lg:grid lg:grid-cols-2 grid-cols-1 gap-4'>
                             <div><ReviewVolumeChart /></div>
                             <div> <ReviewStarsBarChart /></div>
                             <div><CastChart /></div>
                             <div><ReviewRatingChart /></div>
                             <div><SentimentBarChart /></div>
                             <div>
-                                <WordCloudComponent />
+                                {/* <WordCloudComponent /> */}
                             </div>
                             <div className='col-span-2'>
                                 <TopicsTable />

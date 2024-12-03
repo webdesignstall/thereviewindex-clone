@@ -8,11 +8,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import BarChart from "./component/BarChart"
 import { CsatChart } from "./component/CsatChart"
 import { LineChartYear } from "./component/LineChart"
 import { RatingChart } from "./component/RatingChart"
 import StraightLineChart from "./component/1080"
+import { BarChartComponent } from "./component/BarChart"
 
 
 const invoices = [
@@ -107,7 +107,7 @@ export default function Compare() {
         <TableRow>
           <TableCell>TOPIC VALUME</TableCell>
           <TableCell colSpan={5}>
-            <BarChart />
+            <BarChartComponent />
           </TableCell>
         </TableRow>
         <TableRow>

@@ -10,11 +10,15 @@ import Link from 'next/link'
 import { Calendar, ChartNoAxesColumnIncreasing, ChevronLeft, CircleHelp, Home, LineChart, LogOut, Package, Package2, Scale, Search, Settings, ShoppingCart, Star, Timer, Users2, Wrench } from 'lucide-react'
 import Navbar from './Navbar'
 
-
-
 export default function Layout({ children }: { children: React.ReactNode }) {
-    const [activeMenu, setActiveMenu] = useState<string | null>(null);
-    const [activeItem, setActiveItem] = React.useState<any>(topMenuItems[0].menu)
+    const [activeMenu, setActiveMenu] = useState<string | null>(null); // State to track active menu item
+    const [activeItem, setActiveItem] = React.useState<any>(topMenuItems[0].menu);
+
+    const handleMenuClick = (menuName: string, menu: any) => {
+        setActiveMenu(menuName); // Set the active menu name
+        setActiveItem(menu); // Set the active submenu items
+    }
+
     return (
         <div>
             <div className=''>
@@ -32,10 +36,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 <TooltipProvider>
                                     {topMenuItems.map((item, index) => (
                                         <Tooltip key={index}>
-                                            <TooltipTrigger className={index === 4 ? 'flex-grow' : ''} onClick={() => setActiveItem(topMenuItems[index].menu)} asChild>
+                                            <TooltipTrigger className={index === 4 ? 'flex-grow' : ''} onClick={() => handleMenuClick(item.label, item.menu)} asChild>
                                                 <Link
                                                     href={item.href}
-                                                    className={index === 4 ? '': `flex h-12 items-center justify-center rounded-lg text-muted-foreground transition-colors dark:text-white dark:hover:bg-neutral-900 w-full`}
+                                                    className={` ${index === 4 ? '' : 'flex h-12 items-center justify-center rounded-lg text-muted-foreground transition-colors dark:text-white dark:hover:bg-neutral-900 w-full'}  ${activeMenu === item.label ? 'bg-neutral-800 text-white' : ''}`}
                                                 >
                                                     {item.icon}
                                                     <span className="sr-only">{item.label}</span>
@@ -44,7 +48,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                             <TooltipContent className='text-sm' side="right">{item.label}</TooltipContent>
                                         </Tooltip>
                                     ))}
-                            
                                 </TooltipProvider>
                             </nav>
                         </aside>
@@ -56,11 +59,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                 <div className={`absolute md:static z-30 h-full hidden lg:inline-block inset-y-0 right-0 max-w-3xs overflow-hidden ${parseInt(activeItem?.length) > 0 ? 'w-56' : 'w-0'}`}>
                                     <ul className='border-r border-gray-800 h-screen'>
                                         <li className='py-4 cursor-pointer flex justify-end items-center'>
-                                        <ChevronLeft  className='border border-gray-800 rounded-l-2xl w-12 text-gray-400 hover:text-gray-50 duration-200' size={30} />
+                                            <ChevronLeft className='border border-gray-800 rounded-l-2xl w-12 text-gray-400 hover:text-gray-50 duration-200' size={30} />
                                         </li>
                                         {
                                             activeItem?.map((item: any, index: number) => (
-                                                <li key={index} className=''><Link className={`hover:bg-neutral-700 duration-200 cursor-pointer p-2 text-sm text-neutral-400 hover:text-neutral-50 block`} href={item.link}>{item.title}</Link></li>
+                                                <li key={index} className=''>
+                                                    <Link className={`hover:bg-neutral-700 duration-200 cursor-pointer p-2 text-sm text-neutral-400 hover:text-neutral-50 block`} href={item.link}>{item.title}</Link>
+                                                </li>
                                             ))
                                         }
                                     </ul>
@@ -83,7 +88,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
     )
 }
-
 
 const topMenuItems = [
     {
