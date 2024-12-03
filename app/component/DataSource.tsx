@@ -49,7 +49,7 @@ export default function DataSource() {
                 </div>
                 <div className='lg:max-w-md min-w-max'>
                     <div className='relative w-full h-full border  rounded-md overflow-auto px-4 py-5 sm:p-5 '>
-                        <div className='flex flex-col divide-y divide-primar divide-gray-700'>
+                        <div className='flex flex-col divide-y divide-primar dark:divide-gray-700'>
                             <div className=' text-center md:py-6 py-2'>
                                 <div className='flex w-full h-full items-center'>
                                     <div className='m-auto'>

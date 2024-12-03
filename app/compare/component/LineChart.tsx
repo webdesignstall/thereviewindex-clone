@@ -20,26 +20,26 @@ import {
 
 // Updated demo chart data (Years: 2005 to 2024, Data: 0k to 4k)
 const chartData = [
-  { year: "2005", revenue: 1200 },
-  { year: "2006", revenue: 1400 },
-  { year: "2007", revenue: 1600 },
-  { year: "2008", revenue: 1800 },
-  { year: "2009", revenue: 2000 },
-  { year: "2010", revenue: 2200 },
-  { year: "2011", revenue: 2300 },
-  { year: "2012", revenue: 2500 },
-  { year: "2013", revenue: 2700 },
-  { year: "2014", revenue: 2900 },
-  { year: "2015", revenue: 3100 },
-  { year: "2016", revenue: 3300 },
-  { year: "2017", revenue: 3500 },
-  { year: "2018", revenue: 3700 },
-  { year: "2019", revenue: 3900 },
-  { year: "2020", revenue: 3800 },
-  { year: "2021", revenue: 4000 },
-  { year: "2022", revenue: 4200 },
-  { year: "2023", revenue: 4300 },
-  { year: "2024", revenue: 4500 },
+  { year: "2005", revenue: 100 },
+  { year: "2006", revenue: 102 },
+  { year: "2007", revenue: 105 },
+  { year: "2008", revenue: 100 },
+  { year: "2009", revenue: 110 },
+  { year: "2010", revenue: 115 },
+  { year: "2011", revenue: 130 },
+  { year: "2012", revenue: 200 },
+  { year: "2013", revenue: 2000 },
+  { year: "2014", revenue: 2200 },
+  { year: "2015", revenue: 4000 },
+  { year: "2016", revenue: 4050 },
+  { year: "2017", revenue: 3000 },
+  { year: "2018", revenue: 2800 },
+  { year: "2019", revenue: 3000 },
+  { year: "2020", revenue: 3500 },
+  { year: "2021", revenue: 3000 },
+  { year: "2022", revenue: 2000 },
+  { year: "2023", revenue: 2200 },
+  { year: "2024", revenue: 1800 },
 ];
 
 // Chart configuration
@@ -103,7 +103,7 @@ export function LineChartYear() {
           Trending up by 5.2% this year <TrendingUp className="h-4 w-4" />
         </div>
         <div className="leading-none text-muted-foreground">
-          Showing total revenue from 2005 to 2024
+          Showing total revenue for 2005-2024
         </div>
       </CardFooter>
     </Card>

@@ -1,17 +1,29 @@
 import { Input } from '@/components/ui/input'
-import { Dot, HelpCircle, SearchIcon } from 'lucide-react'
+import { Bookmark, Dot, Download, Filter, HelpCircle, Moon, SearchIcon } from 'lucide-react'
 import React from 'react'
 import { Comment } from './component/Comment'
-import { TrendChart } from './component/TrendChart'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { LineChartYear } from './component/TrendChart'
 
 export default function Search() {
   return (
     <div className='max-w-screen-2xl m-auto'>
-      <div className='pb-6'>
+      <div className='pb-6 flex justify-between items-center'>
         <div className='flex gap-1 justify-start items-center'>
           <div className='border text-md font-semibold p-2'>Dell (Brand)- Amazon US</div>
           <div className='border text-sm font-medium'><SearchIcon size={40} className='p-2' /></div>
+        </div>
+        <div className='flex space-x-3 justify-center items-center'>
+          <div><Download /></div>
+          <div><Moon /></div>
+          <div><Bookmark /></div>
+          <div>
+            <Button variant='outline' className='flex justify-center items-center'>
+            <span><Filter /></span>
+            Filter
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -39,7 +51,7 @@ export default function Search() {
               <Comment />
             </div>
             <div className='col-span-3 lg:col-span-1'>
-              <div className='grid grid-cols-3 p-2'>
+              <div className='grid grid-cols-3 p-2 gap-1'>
                 <div className='border w-full h-16 justify-center items-center flex rounded-md flex-col'>
                   <p className='text-sm text-gray-400'>POSITIVE</p>
                   <p>1500</p>
@@ -61,8 +73,8 @@ export default function Search() {
                   <p>1500</p>
                 </div>
               </div>
-              <div>
-                <TrendChart />
+              <div className='p-2'>
+                <LineChartYear />
               </div>
             </div>
           </div>

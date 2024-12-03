@@ -1,78 +1,62 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts"
+import React from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine } from "recharts";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { TrendingUp } from "lucide-react";
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
+// Sample demo data for 2005-2024 with -2k to 4k values
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-]
+  { year: "2005", value1: -1500, value2: 2200 },
+  { year: "2006", value1: 1800, value2: 2500 },
+  { year: "2007", value1: -1000, value2: 3000 },
+  { year: "2008", value1: -2500, value2: 2300 },
+  { year: "2009", value1: 1500, value2: 2900 },
+  { year: "2010", value1: 2200, value2: 3200 },
+  { year: "2011", value1: 1800, value2: 3400 },
+];
 
+// Chart configuration
 const chartConfig = {
   desktop: {
-    label: "Desktop",
-    color: "hsl(var(--chart-1))",
+    label: "Revenue Over Time",
+    color: "hsl(var(--chart-1))", // Make sure this color is set in your global styles
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
-export function TrendChart() {
+export function LineChartYear() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Bar Chart - Label</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardTitle className="uppercase text-lg text-center">Sentiment Trend</CardTitle>
+        <CardDescription className="hidden">Year-wise financial data</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
           <BarChart
-            accessibilityLayer
+            width={500}
+            height={300}
             data={chartData}
             margin={{
-              top: 20,
+              top: 10,
+              right: 30,
+              left: 20,
+              bottom: 20,
             }}
           >
-            <CartesianGrid vertical={false} />
-            <XAxis
-              dataKey="month"
-              tickLine={false}
-              tickMargin={10}
-              axisLine={false}
-              tickFormatter={(value) => value.slice(0, 3)}
-            />
-            <ChartTooltip
-              cursor={false}
-              content={<ChartTooltipContent hideLabel />}
-            />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8}>
-              <LabelList
-                position="top"
-                offset={12}
-                className="fill-foreground"
-                fontSize={12}
-              />
-            </Bar>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis domain={[-2000, 4000]} tickFormatter={(value) => `${value / 1000}k`} />
+            <Tooltip content={<ChartTooltipContent hideLabel />} />
+            <Legend />
+            <ReferenceLine y={0} stroke="#000" />
+            <Bar dataKey="value1" fill="#8884d8" />
+            <Bar dataKey="value2" fill="#82ca9d" />
           </BarChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
+      <CardFooter className="flex-col items-start gap-2 text-sm hidden">
         <div className="flex gap-2 font-medium leading-none">
           Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
         </div>
@@ -81,5 +65,5 @@ export function TrendChart() {
         </div>
       </CardFooter>
     </Card>
-  )
+  );
 }
