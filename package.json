@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/charts": "^2.2.3",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "^1.2.1",
     "@radix-ui/react-alert-dialog": "^1.1.2",
@@ -28,10 +29,13 @@
     "@radix-ui/react-switch": "^1.1.1",
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.4",
+    "antd": "^5.22.3",
     "chart.js": "^4.4.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "d3": "^7.9.0",
+    "d3-cloud": "^1.2.7",
     "framer-motion": "^11.12.0",
     "lucide-react": "^0.462.0",
     "next": "14.2.18",
@@ -46,12 +50,15 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.1",
+    "wordcloud": "^1.2.3",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/d3": "^7.4.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/wordcloud": "^1.2.2",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

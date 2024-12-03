@@ -1,22 +1,13 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import Sidebar from "@/components/layout/Sidebar";
-import Navbar from "@/components/layout/Navbar";
 import Layout from "@/components/layout/Layout";
-import Image from "next/image";
+import {Inter} from 'next/font/google'
 
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const inter = Inter({
+  subsets: ['latin'],       // You can specify subsets like 'latin' or 'latin-ext'
+  weight: ['100', '400', '600', '900'], // Specify the weights you need
+  variable: '--font-inter', // Optional: Use a CSS variable to apply it globally
 });
 
 export const metadata: Metadata = {
@@ -32,10 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link rel="icon" href="/tu-berlin-logo-long-red.svg" type="image/x-icon" />
+        <link rel="icon" href="/tu-berlin-logo-long-red.svg" type="image/x-icon" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"

@@ -1,106 +1,83 @@
-"use client"
+'use client';
 
-import { TrendingUp } from "lucide-react"
-import { CartesianGrid, XAxis, YAxis, Tooltip, Legend, BarChart, Bar, Cell } from "recharts"
-
+import React from "react";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
 
-// Simulating demo data for reviews from 2005-2024 with ratings from 1-5 stars, count range: 0-5k
-const chartData = Array.from({ length: 20 }, (_, i) => {
-  const year = 2005 + i
-  return {
-    year: year.toString(),
-    "1_star": Math.floor(Math.random() * 5001),
-    "2_star": Math.floor(Math.random() * 5001),
-    "3_star": Math.floor(Math.random() * 5001),
-    "4_star": Math.floor(Math.random() * 5001),
-    "5_star": Math.floor(Math.random() * 5001),
-  }
-})
+// Data for the chart
+const data = [
+  { year: "2005", oneStar: 0, twoStar: 0, threeStar: 0, fourStar: 3, fiveStar: 9 },
+  { year: "2006", oneStar: 1, twoStar: 2, threeStar: 2, fourStar: 5, fiveStar: 14 },
+  { year: "2007", oneStar: 4, twoStar: 0, threeStar: 0, fourStar: 3, fiveStar: 14 },
+  { year: "2008", oneStar: 4, twoStar: 4, threeStar: 0, fourStar: 9, fiveStar: 11 },
+  { year: "2009", oneStar: 3, twoStar: 4, threeStar: 4, fourStar: 18, fiveStar: 33 },
+  { year: "2010", oneStar: 13, twoStar: 4, threeStar: 10, fourStar: 13, fiveStar: 38 },
+  { year: "2011", oneStar: 14, twoStar: 6, threeStar: 3, fourStar: 25, fiveStar: 54 },
+  { year: "2012", oneStar: 28, twoStar: 22, threeStar: 38, fourStar: 115, fiveStar: 366 },
+  { year: "2013", oneStar: 103, twoStar: 58, threeStar: 86, fourStar: 280, fiveStar: 1085 },
+  { year: "2014", oneStar: 140, twoStar: 100, threeStar: 116, fourStar: 455, fiveStar: 1664 },
+  { year: "2015", oneStar: 241, twoStar: 159, threeStar: 203, fourStar: 624, fiveStar: 2706 },
+  { year: "2016", oneStar: 301, twoStar: 160, threeStar: 265, fourStar: 577, fiveStar: 2701 },
+  { year: "2017", oneStar: 265, twoStar: 148, threeStar: 206, fourStar: 401, fiveStar: 2016 },
+  { year: "2018", oneStar: 303, twoStar: 127, threeStar: 170, fourStar: 318, fiveStar: 1702 },
+  { year: "2019", oneStar: 287, twoStar: 139, threeStar: 188, fourStar: 392, fiveStar: 2212 },
+  { year: "2020", oneStar: 437, twoStar: 186, threeStar: 242, fourStar: 439, fiveStar: 2273 },
+  { year: "2021", oneStar: 423, twoStar: 175, threeStar: 206, fourStar: 353, fiveStar: 1793 },
+  { year: "2022", oneStar: 356, twoStar: 129, threeStar: 153, fourStar: 234, fiveStar: 1043 },
+  { year: "2023", oneStar: 391, twoStar: 131, threeStar: 157, fourStar: 213, fiveStar: 1037 },
+  { year: "2024", oneStar: 273, twoStar: 84, threeStar: 107, fourStar: 183, fiveStar: 983 },
+];
 
-// Chart configuration (optional customization, such as colors, labels, etc.)
-const chartConfig = {
-  "1_star": {
-    label: "1 Star",
-    color: "#ff6347", // Tomato
-  },
-  "2_star": {
-    label: "2 Stars",
-    color: "#ffcc00", // Yellow
-  },
-  "3_star": {
-    label: "3 Stars",
-    color: "#32cd32", // LimeGreen
-  },
-  "4_star": {
-    label: "4 Stars",
-    color: "#1e90ff", // DodgerBlue
-  },
-  "5_star": {
-    label: "5 Stars",
-    color: "#8a2be2", // BlueViolet
-  },
-}
+// Sort data in descending order by total review count
+const sortedData = data.map((item) => {
+  const totalReviews =
+    item.oneStar + item.twoStar + item.threeStar + item.fourStar + item.fiveStar;
+  return { ...item, totalReviews };
+}).sort((a, b) => b.totalReviews + a.totalReviews);
 
-export default function ReviewStarsBarChart() {
+// Colors for different review types
+const colors = {
+  oneStar: "#9d0505",    // Red
+  twoStar: "#e93838",    // Bright Red
+  threeStar: "#e7cc0f",  // Yellow
+  fourStar: "#00998b",   // Teal
+  fiveStar: "#0cb959",   // Green
+};
+
+export default function ReviewChart() {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Review Stars Split - 2005 to 2024</CardTitle>
-        <CardDescription>Yearly Review Count (0-5000)</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <ChartContainer config={chartConfig}>
-          <BarChart
-            width={800}
-            height={400}
-            data={chartData}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" />
-            <YAxis />
-            <Tooltip cursor={false} content={<ChartTooltipContent />} />
-            <Legend />
+    <ResponsiveContainer width="100%" height={400}>
+      <BarChart
+        data={sortedData}
+        barGap={4} // Gap between bars
+        margin={{
+          top: 20,
+          right: 30,
+          left: 20,
+          bottom: 50,
+        }}
+      >
+        <XAxis dataKey="year" label={{ value: "Year", position: "bottom", offset: 10 }} />
+        <YAxis 
+          label={{ value: "Review Count", angle: -90, position: "insideLeft" }} 
+          domain={[0, "dataMax"]} // Ensures Y-axis starts at 0
+        />
+        <Tooltip />
+        <Legend />
 
-            {/* Bars for Different Star Ratings */}
-            <Bar dataKey="1_star" fill={chartConfig["1_star"].color} />
-            <Bar dataKey="2_star" fill={chartConfig["2_star"].color} />
-            <Bar dataKey="3_star" fill={chartConfig["3_star"].color} />
-            <Bar dataKey="4_star" fill={chartConfig["4_star"].color} />
-            <Bar dataKey="5_star" fill={chartConfig["5_star"].color} />
-          </BarChart>
-        </ChartContainer>
-      </CardContent>
-      <CardFooter>
-        <div className="flex w-full items-start gap-2 text-sm">
-          <div className="grid gap-2">
-            <div className="flex items-center gap-2 font-medium leading-none">
-              Trending up by 5.2% this year <TrendingUp className="h-4 w-4" />
-            </div>
-            <div className="flex items-center gap-2 leading-none text-muted-foreground">
-              Showing review data for stars 1-5 from 2005 - 2024
-            </div>
-          </div>
-        </div>
-      </CardFooter>
-    </Card>
-  )
+        <Bar dataKey="fiveStar" stackId="a" fill={colors.fiveStar} />
+        <Bar dataKey="fourStar" stackId="a" fill={colors.fourStar} />
+        <Bar dataKey="threeStar" stackId="a" fill={colors.threeStar} />
+        <Bar dataKey="twoStar" stackId="a" fill={colors.twoStar} />
+        <Bar dataKey="oneStar" stackId="a" fill={colors.oneStar} />
+      </BarChart>
+    </ResponsiveContainer>
+  );
 }
