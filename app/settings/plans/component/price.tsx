@@ -18,55 +18,87 @@ import {
 
 export function Price() {
   return (
-    <Tabs defaultValue="account" className="w-[400px]">
+    <Tabs defaultValue="month" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="month">Monthly</TabsTrigger>
+        <TabsTrigger value="annual">Annual</TabsTrigger>
       </TabsList>
-      <TabsContent value="account">
+      <TabsContent value="month">
         <Card>
           <CardHeader>
-            <CardTitle>Account</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-md uppercase ">Enterprise</CardTitle>
+            <CardDescription className="hidden">
               Make changes to your account here. Click save when you're done.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" defaultValue="Pedro Duarte" />
+            <div>
+              <div className="w-full pb-3">
+                <p className="text-3xl font-semibold text-center">Custom</p>
+              </div>
+              <div className="w-full pb-4">
+                <Button className="w-full py-6 rounded-lg text-lg hover:bg-blue-600" variant='outline'>Request Quote</Button>
+              </div>
+              <div className="pb-3">
+                <p className="text-gray-400 pb-2 font-semibold">INCLUDED</p>
+                <div className="space-y-3">
+                  <p>Custom products / month</p>
+                  <p>30+ eCommerce channels</p>
+                  <p>100% translations</p>
+                  <p>Unlimited Users</p>
+                </div>
+              </div>
+              <div>
+                <p className="text-gray-400 uppercase font-semibold pb-2">PLUS</p>
+                <div className="space-y-3">
+                  <p>Custom Channels</p>
+                  <p>Custom Models</p>
+                  <p>Instant Full Category Reports</p>
+                  <p>Dedicated Account Manager</p>
+                </div>
+              </div>
             </div>
-            <div className="space-y-1">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" defaultValue="@peduarte" />
-            </div>
+
           </CardContent>
-          <CardFooter>
-            <Button>Save changes</Button>
-          </CardFooter>
         </Card>
       </TabsContent>
-      <TabsContent value="password">
+      <TabsContent value="annual">
         <Card>
           <CardHeader>
-            <CardTitle>Password</CardTitle>
-            <CardDescription>
-              Change your password here. After saving, you'll be logged out.
+            <CardTitle className="text-md uppercase ">Enterprise</CardTitle>
+            <CardDescription className="hidden">
+              Make changes to your account here. Click save when you're done.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="current">Current password</Label>
-              <Input id="current" type="password" />
+            <div>
+              <div className="w-full pb-3">
+                <p className="text-3xl font-semibold text-center">Custom</p>
+              </div>
+              <div className="w-full pb-4">
+                <Button className="w-full py-6 rounded-lg text-lg hover:bg-blue-600" variant='outline'>Request Quote</Button>
+              </div>
+              <div className="pb-3">
+                <p className="text-gray-400 pb-2 font-semibold">INCLUDED</p>
+                <div className="space-y-3">
+                  <p>Custom products / month</p>
+                  <p>30+ eCommerce channels</p>
+                  <p>100% translations</p>
+                  <p>Unlimited Users</p>
+                </div>
+              </div>
+              <div>
+                <p className="text-gray-400 uppercase font-semibold pb-2">PLUS</p>
+                <div className="space-y-3">
+                  <p>Custom Channels</p>
+                  <p>Custom Models</p>
+                  <p>Instant Full Category Reports</p>
+                  <p>Dedicated Account Manager</p>
+                </div>
+              </div>
             </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">New password</Label>
-              <Input id="new" type="password" />
-            </div>
+
           </CardContent>
-          <CardFooter>
-            <Button>Save password</Button>
-          </CardFooter>
         </Card>
       </TabsContent>
     </Tabs>

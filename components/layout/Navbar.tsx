@@ -1,17 +1,19 @@
 import React from 'react'
 import { Dark } from '../dark'
-import { NavbarItem } from './NavItem'
+import { MobileNavbar } from './NavItem'
+
 
 
 export default function Navbar() {
   return (
-    <div>
-      <div className='hidden'>
-        <NavbarItem />
+    <div className='flex justify-between items-center dark:bg-neutral-900 p-4'>
+      <div className='flex md:hidden'>
+        <MobileNavbar />
       </div>
-      <div className='dark:bg-neutral-900 flex justify-center items-center p-4'>
-        <p className='text-sm dark:text-white text-black flex flex-1 justify-center text'>You are viewing demo data</p>
+      <div className='text-center lg:w-full'>
+        <p className='text-sm dark:text-white'>You are viewing demo data</p>
       </div>
+      {/* <div className='lg:hidden'></div> */}
     </div>
   )
 }

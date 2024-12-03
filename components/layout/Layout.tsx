@@ -10,11 +10,14 @@ import Link from 'next/link'
 import { Calendar, ChartNoAxesColumnIncreasing, ChevronLeft, CircleHelp, Home, LineChart, LogOut, Package, Package2, Scale, Search, Settings, ShoppingCart, Star, Timer, Users2, Wrench } from 'lucide-react'
 import Navbar from './Navbar'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+
 
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [activeMenu, setActiveMenu] = useState<string | null>(null); // State to track active menu item
     const [activeItem, setActiveItem] = React.useState<any>(topMenuItems[0].menu);
 
+    const pathname = usePathname()
     const handleMenuClick = (menuName: string, menu: any) => {
         setActiveMenu(menuName); // Set the active menu name
         setActiveItem(menu); // Set the active submenu items
@@ -26,7 +29,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 <div className='flex h-screen overflow-hidden print:overflow-visible bg-background print:h-auto print:w-full '>
                     <div className='relative hidden md:flex md:flex-shrink-0 border-r print:hidden group duration-75 w-16'>
                         <aside className="w-16">
-                            <nav className="flex flex-col items-center gap-3 px-1 py-4 h-full">
+                            <nav className="flex flex-col justify-center items-center gap-3 px-1 py-4 h-full">
                                 <Link
                                     href="#"
                                     className="group flex h-9 w-10 shrink-0 items-center justify-center gap-2 rounded-lg  text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
@@ -69,7 +72,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                         {
                                             activeItem?.map((item: any, index: number) => (
                                                 <li key={index} className=''>
-                                                    <Link className={`dark:hover:bg-neutral-700 hover:bg-neutral-200 duration-200 cursor-pointer p-2 text-sm dark:text-neutral-400 dark:hover:text-neutral-50 block`} href={item.link}>{item.title}</Link>
+                                                    <Link className={` ${pathname === item.link ? 'bg-neutral-700 dark:text-white': ''} ${index === 0 ? 'text-sm text-gray-300 font-semibold p-2 bg-neutral-950 uppercase w-full block' : 'dark:hover:bg-neutral-700 hover:bg-neutral-200 duration-200 cursor-pointer p-2 text-sm dark:text-neutral-400 dark:hover:text-neutral-50 block'}`} href={item.link}>{item.title}</Link>
                                                 </li>
                                             ))
                                         }
@@ -105,6 +108,10 @@ const topMenuItems = [
         label: "Reports",
         icon: <ChartNoAxesColumnIncreasing className="h-5 w-5" />,
         menu: [
+            {
+                title: "Reports",
+                link: '/reports/brand-report'
+            },
             {
                 title: 'Brand Report',
                 link: '/reports/brand-report'
@@ -144,6 +151,10 @@ const topMenuItems = [
         icon: <Wrench className="h-5 w-5" />,
         menu: [
             {
+                title: "Manage",
+                link: '/manage/data-sources'
+            },
+            {
                 title: 'Data Sources',
                 link: '/manage/data-sources'
             },
@@ -162,6 +173,11 @@ const topMenuItems = [
         label: "Settings",
         icon: <Settings className="h-5 w-5" />,
         menu: [
+
+            {
+                title: 'Settings',
+                link: '/settings/preferences'
+            },
             {
                 title: 'Preferences',
                 link: '/settings/preferences'

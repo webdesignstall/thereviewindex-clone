@@ -1,151 +1,116 @@
-import {
-    Cloud,
-    CreditCard,
-    Github,
-    Keyboard,
-    LifeBuoy,
-    LogOut,
-    Mail,
-    MessageSquare,
-    Plus,
-    PlusCircle,
-    Settings,
-    User,
-    UserPlus,
-    Users,
-    Home,
-    ChartNoAxesColumnIncreasing,
-    Scale,
-    Wrench,
-    CircleHelp
-  } from "lucide-react";
-  
-  import { Button } from "@/components/ui/button";
-  import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
-    DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu";
-  
-  const topMenuItems = [
-    {
-      href: "/",
-      label: "Home",
-      icon: <Home className="h-5 w-5" />
-    },
-    {
-      href: "/reports/brand-report",
-      label: "Reports",
-      icon: <ChartNoAxesColumnIncreasing className="h-5 w-5" />,
-      menu: [
-        { id: 1, title: 'Brand Report', link: '/reports/brand-report' },
-        { id: 2, title: 'Topics Table', link: '/reports/topics-table' },
-        { id: 3, title: 'Sentiment-Volume Report', link: '/reports/sentiment-volume-report' },
-        { id: 4, title: 'Product Report', link: '/reports/product-report' }
-      ]
-    },
-    {
-      href: "/search",
-      label: "Search",
-      icon: <Scale className="h-5 w-5" />
-    },
-    {
-      href: "/compare",
-      label: "Compare",
-      icon: <Scale className="h-5 w-5" />
-    },
-    {
-      href: "/manage/data-sources",
-      label: "Manage",
-      icon: <Wrench className="h-5 w-5" />,
-      menu: [
-        { id: 1, title: 'Data Sources', link: '/manage/data-sources' },
-        { id: 2, title: 'Topics', link: '/manage/topics' },
-        { id: 3, title: 'Catalog', link: '/manage/catalog' }
-      ]
-    },
-    {
-      href: "/settings/preferences",
-      label: "Settings",
-      icon: <Settings className="h-5 w-5" />,
-      menu: [
-        { id: 1, title: 'Preferences', link: '/settings/preferences' },
-        { id: 2, title: 'Plans', link: '/settings/plans' },
-        { id: 3, title: 'Profile', link: '/settings/profile' }
-      ]
-    },
-    {
-      href: "/help",
-      label: "Help",
-      icon: <CircleHelp className="h-5 w-5" />
-    },
-    {
-      href: "/logout",
-      label: "Logout",
-      icon: <LogOut className="h-5 w-5" />
-    }
-  ];
-  
-  export function NavbarItem() {
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline">Open</Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
-          <div className="text-lg font-semibold">Brand Logo</div>
-  
-          {/* Sidebar Menu Items */}
-          <DropdownMenuGroup>
+import React, { useState } from 'react';
+import { Home, ChartNoAxesColumnIncreasing, Scale, Wrench, Settings, CircleHelp, LogOut, AlignJustify } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import Link from 'next/link';
+
+const topMenuItems = [
+  {
+    href: "/",
+    label: "Home",
+    icon: <Home className="h-5 w-5" />
+  },
+  {
+    href: "/reports/brand-report",
+    label: "Reports",
+    icon: <ChartNoAxesColumnIncreasing className="h-5 w-5" />,
+    menu: [
+      { id: 1, title: 'Brand Report', link: '/reports/brand-report' },
+      { id: 2, title: 'Topics Table', link: '/reports/topics-table' },
+      { id: 3, title: 'Sentiment-Volume Report', link: '/reports/sentiment-volume-report' },
+      { id: 4, title: 'Product Report', link: '/reports/product-report' }
+    ]
+  },
+  {
+    href: "/search",
+    label: "Search",
+    icon: <Scale className="h-5 w-5" />
+  },
+  {
+    href: "/compare",
+    label: "Compare",
+    icon: <Scale className="h-5 w-5" />
+  },
+  {
+    href: "/manage/data-sources",
+    label: "Manage",
+    icon: <Wrench className="h-5 w-5" />,
+    menu: [
+      { id: 1, title: 'Data Sources', link: '/manage/data-sources' },
+      { id: 2, title: 'Topics', link: '/manage/topics' },
+      { id: 3, title: 'Catalog', link: '/manage/catalog' }
+    ]
+  },
+  {
+    href: "/settings/preferences",
+    label: "Settings",
+    icon: <Settings className="h-5 w-5" />,
+    menu: [
+      { id: 1, title: 'Preferences', link: '/settings/preferences' },
+      { id: 2, title: 'Plans', link: '/settings/plans' },
+      { id: 3, title: 'Profile', link: '/settings/profile' }
+    ]
+  },
+  {
+    href: "/help",
+    label: "Help",
+    icon: <CircleHelp className="h-5 w-5" />
+  },
+  {
+    href: "/logout",
+    label: "Logout",
+    icon: <LogOut className="h-5 w-5" />
+  }
+];
+
+export function MobileNavbar() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="outline">
+            <AlignJustify />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side='left' className="max-w-xs w-full">
+          <SheetHeader className='hidden'>
+            <SheetTitle>Menu</SheetTitle>
+            <SheetDescription>
+              Select an option to navigate.
+            </SheetDescription>
+          </SheetHeader>
+
+          <div className="space-y-4">
             {topMenuItems.map((item) => (
-              <div key={item.href} className="relative">
-                {/* Menu Item without Submenu */}
-                {!item.menu ? (
-                  <DropdownMenuItem asChild>
-                    <a
-                      href={item.href}
-                      className="flex items-center p-2 rounded-md hover:bg-gray-700"
-                    >
-                      {item.icon}
-                      <span className="ml-3">{item.label}</span>
-                    </a>
-                  </DropdownMenuItem>
-                ) : (
-                  // Menu Item with Submenu
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger>
-                      <div className="flex items-center p-2 rounded-md hover:bg-gray-700">
-                        {item.icon}
-                        <span className="ml-3">{item.label}</span>
-                      </div>
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent>
-                      {item.menu.map((subItem) => (
-                        <DropdownMenuItem key={subItem.id} asChild>
-                          <a
-                            href={subItem.link}
-                            className="block p-2 pl-8 text-sm text-gray-300 hover:bg-gray-700"
-                          >
+              <div key={item.href} className="space-y-2">
+                <div className="flex items-center space-x-2">
+                  {item.icon}
+                  <Link href={item.href} className="text-md font-medium">
+                    <SheetClose>
+                      {item.label}
+                    </SheetClose>
+                  </Link>
+                </div>
+                {item.menu && (
+                  <div className="pl-6 space-y-2">
+                    {item.menu.map((subItem) => (
+                      <div key={subItem.id} className="flex items-center space-x-2 w-full">
+                        <Link href={subItem.link} className="text-sm text-gray-500 w-full hover:text-gray-300 duration-150">
+                          <SheetClose>
                             {subItem.title}
-                          </a>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuSubContent>
-                  </DropdownMenuSub>
+                          </SheetClose>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             ))}
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  }
-  
+          </div>
+        </SheetContent>
+      </Sheet>
+    </>
+  );
+}
