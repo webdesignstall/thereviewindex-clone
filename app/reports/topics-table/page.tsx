@@ -1,9 +1,9 @@
 'use client'
 import React, {useState} from 'react'
-import { ReportTable } from './component/ReportTable'
+import ReportTable  from './component/ReportTable'
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight, Dot, SearchIcon} from 'lucide-react'
-import {Comment} from './component/Comment'
+import Comment from './component/Comment'
 
 export default function TopicsTable() {
 

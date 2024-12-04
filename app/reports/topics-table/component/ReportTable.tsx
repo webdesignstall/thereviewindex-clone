@@ -1,4 +1,3 @@
-'use client'
 import {
     Table,
     TableBody,
@@ -9,7 +8,7 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
-import {AreaChartComponent} from "./AreaChart";
+import AreaChartComponent from "./AreaChart";
   
   const topics = [
     {
@@ -62,7 +61,7 @@ import {AreaChartComponent} from "./AreaChart";
     },
   ]
   
-  export function ReportTable({setIsComment}  : {setIsComment?: any}) {
+export default function ReportTable({setIsComment}  : {setIsComment?: any}) {
     return (
       <Table className='border-none'>
         <TableCaption>A summary of topic discussions, feedback, and impact scores.</TableCaption>
