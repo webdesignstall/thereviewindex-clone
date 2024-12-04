@@ -5,6 +5,7 @@ import { Comment } from './component/Comment'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { LineChartYear } from './component/TrendChart'
+import { MentionChart } from './component/MentionChart'
 
 export default function Search() {
   return (
@@ -73,8 +74,9 @@ export default function Search() {
                   <p>1500</p>
                 </div>
               </div>
-              <div className='p-2'>
+              <div className='p-2 grid col-span-1 gap-4'>
                 <LineChartYear />
+                <MentionChart />
               </div>
             </div>
           </div>
