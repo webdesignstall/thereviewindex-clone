@@ -46,14 +46,14 @@ const PieChartWithAnimation: React.FC<PieChartProps> = () => {
                       // On last point, finalize animation
                       if (point.index === points.length - 1) {
                         series.dataLabelsGroup?.animate({ opacity: 1 });
-                        chart.update({
-                          plotOptions: {
-                            pie: {
-                              innerSize: '40%',
-                              borderRadius: 'none',
-                            },
-                          },
-                        });
+                        // chart.update({
+                        //   plotOptions: {
+                        //     pie: {
+                        //       innerSize: '80%',
+                        //       borderRadius: 'none',
+                        //     },
+                        //   },
+                        // });
                         series.update(
                             { enableMouseTracking: true },
                             false
@@ -96,7 +96,7 @@ const PieChartWithAnimation: React.FC<PieChartProps> = () => {
     title: undefined,
     plotOptions: {
       pie: {
-        innerSize: '40%',
+        innerSize: '65%',
         borderRadius: 'none',
         borderColor: 'transparent',
         allowPointSelect: true,

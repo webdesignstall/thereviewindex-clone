@@ -1,8 +1,8 @@
 'use client'
-export default function AreaChartComponent() {
+export default function AreaChartComponent({topic} : {topic: any}) {
     return (
         <div className="w-20">
-             <svg viewBox="0 0 40 15" preserveAspectRatio="none">
+             <svg viewBox={`0 0 ${topic} 15`} preserveAspectRatio="none">
                 <g>
                     <circle
                         cx="2"

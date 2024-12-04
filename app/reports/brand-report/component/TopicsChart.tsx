@@ -90,8 +90,8 @@ export default function TopicsChart() {
             />
             <Legend />
             <ReferenceLine y={0} stroke="#000" />
-            <Bar dataKey="positive" fill="#00bf8a" stackId="stack" isAnimationActive={false} /> {/* Green for positive */}
-            <Bar dataKey="negative" fill="#F44336" stackId="stack" isAnimationActive={false} /> {/* Red for negative */}
+            <Bar dataKey="positive" fill="#1AAE9F" stackId="stack" isAnimationActive={false} /> {/* Green for positive */}
+            <Bar dataKey="negative" fill="#D3455B" stackId="stack" isAnimationActive={false} /> {/* Red for negative */}
           </BarChart>
         </ResponsiveContainer>
       </CardContent>
