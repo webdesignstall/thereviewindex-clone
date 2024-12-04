@@ -9,7 +9,7 @@ import { MentionChart } from './component/MentionChart'
 
 export default function Search() {
   return (
-    <div className='max-w-screen-2xl m-auto'>
+    <div className='max-w-screen-2xl m-auto p-3 md:p-6 lg:p-10'>
       <div className='pb-6 flex justify-between items-center'>
         <div className='flex gap-1 justify-start items-center'>
           <div className='border text-md font-semibold p-2'>Dell (Brand)- Amazon US</div>

@@ -13,7 +13,7 @@ import { Dark } from '@/components/dark'
 
 export default function Preferences() {
     return (
-        <div>
+        <div className='p-3 md:p-6 lg:p-10'>
             <div>
                 <div className='pb-8'>
                     <p className='font-semibold text-xl'>Settings</p>

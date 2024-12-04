@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Catalog() {
   return (
-    <div>
+    <div className='p-3 md:p-6 lg:p-10'>
       <div>
         <div className='py-4'>
           <p className='text-2xl font-semibold'>Manage Catalog</p>

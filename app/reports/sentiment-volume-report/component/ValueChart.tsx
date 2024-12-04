@@ -68,6 +68,10 @@ const options = {
         display: true,
         text: 'Data Value (60-95)',
       },
+      grid: {
+        display: true, // Enable grid lines for the y-axis
+        color: 'gray', // Customize grid line color
+      },
     },
   },
 };

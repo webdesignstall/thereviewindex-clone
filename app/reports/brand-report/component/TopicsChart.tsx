@@ -8,7 +8,8 @@ import {
   YAxis,
   Tooltip,
   Legend,
-  ReferenceLine
+  ReferenceLine,
+  ResponsiveContainer
 } from "recharts";
 import {
   Card,
@@ -17,6 +18,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { BarChartComponent } from "@/app/compare/component/BarChart";
 
 // Updated Data for Positive and Negative Mentions
 const data = [
@@ -52,45 +54,46 @@ export default function TopicsChart() {
         <CardDescription className="hidden">2011 - 2024</CardDescription>
       </CardHeader>
       <CardContent>
-        <BarChart
-          width={600}
-          height={300}
-          data={data}
-          stackOffset="sign"
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5
-          }}
-          barCategoryGap={1} // Reduces the space between categories (groups of bars)
-          barGap={0.5}       // Reduces the space between individual bars within a group
-        >
-          {/* Remove CartesianGrid to hide background lines */}
-          {/* <CartesianGrid strokeDasharray="3 3" /> */}
+        <ResponsiveContainer width="100%" height={400}>
+          <BarChart
+            height={300}
+            data={data}
+            stackOffset="sign"
+            margin={{
+              top: 5,
+              right: 5,
+              left: 5,
+              bottom: 5
+            }}
+            barCategoryGap={1} // Reduces the space between categories (groups of bars)
+            barGap={0.5}       // Reduces the space between individual bars within a group
+          >
+            {/* Remove CartesianGrid to hide background lines */}
+            {/* <CartesianGrid strokeDasharray="3 3" /> */}
 
-          <XAxis dataKey="category"
-            axisLine={true} // Removes the axis line
-            tickLine={false} // Removes the tick marks
-          />
+            <XAxis dataKey="category"
+              axisLine={true} // Removes the axis line
+              tickLine={false} // Removes the tick marks
+            />
 
-          {/* Remove YAxis numbers (ticks and axis line) */}
-          <YAxis
-            axisLine={false} // Removes the Y axis line
-            tick={false} // Removes the numbers (ticks) on the Y axis
-          />
+            {/* Remove YAxis numbers (ticks and axis line) */}
+            <YAxis
+              axisLine={false} // Removes the Y axis line
+              tick={false} // Removes the numbers (ticks) on the Y axis
+            />
 
-          {/* Customize Tooltip to remove hover effect */}
-          <Tooltip
-            active={false} // This disables the hover effect
-            contentStyle={{ backgroundColor: 'transparent' }} // Remove hover background color
-            itemStyle={{ color: '#000' }} // Optional: change text color on hover
-          />
-          <Legend />
-          <ReferenceLine y={0} stroke="#000" />
-          <Bar dataKey="positive" fill="#00bf8a" stackId="stack" isAnimationActive={false} /> {/* Green for positive */}
-          <Bar dataKey="negative" fill="#F44336" stackId="stack" isAnimationActive={false} /> {/* Red for negative */}
-        </BarChart>
+            {/* Customize Tooltip to remove hover effect */}
+            <Tooltip
+              active={false} // This disables the hover effect
+              contentStyle={{ backgroundColor: 'transparent' }} // Remove hover background color
+              itemStyle={{ color: '#000' }} // Optional: change text color on hover
+            />
+            <Legend />
+            <ReferenceLine y={0} stroke="#000" />
+            <Bar dataKey="positive" fill="#00bf8a" stackId="stack" isAnimationActive={false} /> {/* Green for positive */}
+            <Bar dataKey="negative" fill="#F44336" stackId="stack" isAnimationActive={false} /> {/* Red for negative */}
+          </BarChart>
+        </ResponsiveContainer>
       </CardContent>
     </Card>
   );

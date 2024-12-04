@@ -48,7 +48,7 @@ export default function Profile() {
     }
 
     return (
-        <div>
+        <div className='p-3 md:p-6 lg:p-10'>
             <div>
                 <div className="pb-8">
                     <p className="text-xl font-semibold tracking-wider">Profile</p>

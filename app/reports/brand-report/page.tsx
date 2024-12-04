@@ -12,6 +12,7 @@ import { Input } from '@/components/ui/input'
 import TopicsChart from './component/TopicsChart'
 import WordCloud from './component/WordCloud'
 import { CreateBrand } from './component/CreateBrand'
+import CreateTask from '@/components/CreateTask'
 
 
 
@@ -36,7 +37,7 @@ export default function BrandReport() {
     ];
 
     return (
-        <div>
+        <div className='p-3 md:p-6 lg:p-10'>
             <div>
                 <div>
                     <div className='py-2'>
@@ -47,7 +48,7 @@ export default function BrandReport() {
                             <div className='flex gap-1 justify-start items-center'>
                                 <div className='border text-md font-semibold p-2'>Dell (Brand)- Amazon US</div>
                                 <div className='border text-sm font-medium'><SearchIcon size={40} className='p-2' /></div>
-                                <CreateBrand  />
+                                <CreateTask />
                             </div>
                         </div>
                         <div>

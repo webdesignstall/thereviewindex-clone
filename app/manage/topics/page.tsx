@@ -35,7 +35,7 @@ import { Badge } from '@/components/ui/badge'
 
 export default function Topics() {
     return (
-        <div>
+        <div className='p-3 md:p-6 lg:p-10'>
             <div>
                 <div className='flex justify-between items-center pb-8'>
                     <div className='text-2xl font-semibold'>Topics</div>
