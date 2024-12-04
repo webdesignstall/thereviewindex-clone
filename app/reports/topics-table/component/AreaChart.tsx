@@ -1,5 +1,4 @@
-"use client"
-export function AreaChartComponent() {
+export default function AreaChartComponent() {
     return (
         <div className="w-20">
              <svg viewBox="0 0 40 15" preserveAspectRatio="none">

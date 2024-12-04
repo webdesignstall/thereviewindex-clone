@@ -24,7 +24,7 @@ const Rating = ({ rating }: { rating: number }) => {
     );
 };
 
-export function Comment() {
+export default function Comment() {
     return (
         <Tabs defaultValue="all" className="p-2 mt-6">
             <TabsList className={cn('bg-transparent m-auto border gap-1 rounded-lg max-w-lg justify-center flex h-full')}>
