@@ -63,8 +63,8 @@ export function ReviewRatingChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Dell Monitors Performance</CardTitle>
-        <CardDescription>2011 - 2024</CardDescription>
+        <CardTitle>Review Rating Trend</CardTitle>
+        <CardDescription className="text-4xl font-medium">4.2</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>

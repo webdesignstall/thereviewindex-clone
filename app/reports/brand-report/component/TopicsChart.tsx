@@ -1,6 +1,6 @@
 'use client'
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -14,40 +14,42 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/card";
 
-// Data for Positive and Negative Mentions
+// Updated Data for Positive and Negative Mentions
 const data = [
-  { category: "Clarity", positive: 14679, negative: -1794 },
-  { category: "Display", positive: 8207, negative: -2550 },
-  { category: "Price", positive: 8258, negative: -792 },
-  { category: "Reliability", positive: 3768, negative: -2980 },
-  { category: "Color", positive: 5284, negative: -947 },
-  { category: "Marketplace", positive: 2742, negative: -2081 },
-  { category: "Size", positive: 4113, negative: -415 },
-  { category: "Usage", positive: 4490, negative: -274 },
-  { category: "Screen", positive: 3194, negative: -827 },
-  { category: "Usage / Gaming", positive: 3962, negative: -239 },
-  { category: "Build Quality", positive: 2723, negative: -957 },
-  { category: "Design", positive: 3596, negative: -272 },
-  { category: "Installation & Assembly", positive: 3464, negative: -234 }
+  { category: "Clarity", positive: 14693, negative: -1795 },
+  { category: "Display", positive: 8214, negative: -2552 },
+  { category: "Price", positive: 8265, negative: -793 },
+  { category: "Reliability", positive: 3773, negative: -2982 },
+  { category: "Color", positive: 5289, negative: -947 },
+  { category: "Marketplace", positive: 2746, negative: -2084 },
+  { category: "Size", positive: 4116, negative: -415 },
+  { category: "Usage", positive: 4494, negative: -274 },
+  { category: "Screen", positive: 3201, negative: -829 },
+  { category: "Usage / Gaming", positive: 3966, negative: -239 },
+  { category: "Build Quality", positive: 2724, negative: -957 },
+  { category: "Design", positive: 3598, negative: -272 },
+  { category: "Installation & Assembly", positive: 3468, negative: -234 }
 ];
 
 export default function TopicsChart() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);  // Ensure component only renders on the client
+  }, []);
+
+  if (!isClient) {
+    return null; // Avoid rendering the chart on the server
+  }
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Dell Monitors Performance</CardTitle>
-        <CardDescription>2011 - 2024</CardDescription>
+        <CardTitle>Topics And Sentiment</CardTitle>
+        <CardDescription className="hidden">2011 - 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <BarChart
@@ -62,12 +64,15 @@ export default function TopicsChart() {
             bottom: 5
           }}
           barCategoryGap={1} // Reduces the space between categories (groups of bars)
-          barGap={.5}          // Reduces the space between individual bars within a group
+          barGap={0.5}       // Reduces the space between individual bars within a group
         >
           {/* Remove CartesianGrid to hide background lines */}
           {/* <CartesianGrid strokeDasharray="3 3" /> */}
 
-          <XAxis dataKey="category" />
+          <XAxis dataKey="category"
+            axisLine={true} // Removes the axis line
+            tickLine={false} // Removes the tick marks
+          />
 
           {/* Remove YAxis numbers (ticks and axis line) */}
           <YAxis
@@ -75,7 +80,9 @@ export default function TopicsChart() {
             tick={false} // Removes the numbers (ticks) on the Y axis
           />
 
+          {/* Customize Tooltip to remove hover effect */}
           <Tooltip
+            active={false} // This disables the hover effect
             contentStyle={{ backgroundColor: 'transparent' }} // Remove hover background color
             itemStyle={{ color: '#000' }} // Optional: change text color on hover
           />
@@ -88,5 +95,3 @@ export default function TopicsChart() {
     </Card>
   );
 }
-
-

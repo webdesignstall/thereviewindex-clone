@@ -42,7 +42,7 @@ const chartConfig = {
 
 export default function DellChart() {
   return (
-    <Card className="flex flex-col">
+    <Card className="">
       <CardHeader className="items-center pb-0">
         <CardTitle>Sentiment Analysis Chart</CardTitle>
         <CardDescription>Positive, Negative, and Neutral Sentiments</CardDescription>
@@ -52,7 +52,7 @@ export default function DellChart() {
           config={chartConfig}
           className="mx-auto aspect-square max-h-[250px]"
         >
-          <PieChart width={250} height={250}>
+          <PieChart width={800} height={800}>
             <Tooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Pie
               data={chartData}
@@ -66,14 +66,6 @@ export default function DellChart() {
           </PieChart>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col gap-2 text-sm">
-        <div className="flex items-center gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing sentiment breakdown for the recent analysis
-        </div>
-      </CardFooter>
     </Card>
   )
 }

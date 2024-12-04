@@ -18,20 +18,34 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart"
 
-// Data for the line chart
+// Updated data for the line chart (2005-2024 range with values 70, 80, 90, 100)
 const chartData = [
-  { month: "January", desktop: 186 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
+  { year: "2005", value: 100 },
+  { year: "2006", value: 80 },
+  { year: "2007", value: 82 },
+  { year: "2008", value: 70 },
+  { year: "2009", value: 85 },
+  { year: "2010", value: 65 },
+  { year: "2011", value: 75 },
+  { year: "2012", value: 85 },
+  { year: "2013", value: 70 },
+  { year: "2014", value: 72 },
+  { year: "2015", value: 75 },
+  { year: "2016", value: 76 },
+  { year: "2017", value: 80 },
+  { year: "2018", value: 75 },
+  { year: "2019", value: 68 },
+  { year: "2020", value: 65 },
+  { year: "2021", value: 60 },
+  { year: "2022", value: 80 },
+  { year: "2023", value: 55 },
+  { year: "2024", value: 60 },
 ]
 
 // Chart configuration
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Product Rating",
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig
@@ -39,9 +53,9 @@ const chartConfig = {
 export function CsatChart() {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="hidden">
         <CardTitle>Line Chart</CardTitle>
-        <CardDescription>January - June 2024</CardDescription>
+        <CardDescription>2005 - 2024</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>
@@ -57,23 +71,23 @@ export function CsatChart() {
             >
               <CartesianGrid vertical={false} />
               <XAxis
-                dataKey="month"
+                dataKey="year"
                 tickLine={false}
                 axisLine={false}
                 tickMargin={8}
-                tickFormatter={(value) => value}  // Use the full month name
+                tickFormatter={(value) => value} // Display the full year
               />
               <YAxis
                 tickLine={false}
                 axisLine={false}
-                domain={[0, "dataMax + 50"]}  // Allow space for the highest value
+                domain={[70, "dataMax + 5"]} // Allow space for the highest value
               />
               <Tooltip
                 content={<ChartTooltipContent hideLabel />}
                 cursor={false}
               />
               <Line
-                dataKey="desktop"
+                dataKey="value"
                 type="monotone"
                 stroke="var(--color-desktop)"
                 strokeWidth={2}
@@ -83,13 +97,8 @@ export function CsatChart() {
           </ResponsiveContainer>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total visitors for the last 6 months
-        </div>
+      <CardFooter>
+        <div className="flex justify-center items-center w-full">Dell (Brand) - Amazon US</div>
       </CardFooter>
     </Card>
   )
