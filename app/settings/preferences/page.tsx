@@ -36,12 +36,12 @@ export default function Preferences() {
                                         </SelectTrigger>
                                         <SelectContent>
                                             <SelectGroup>
-                                                <SelectLabel>Fruits</SelectLabel>
-                                                <SelectItem value="apple">Apple</SelectItem>
-                                                <SelectItem value="banana">Banana</SelectItem>
-                                                <SelectItem value="blueberry">Blueberry</SelectItem>
-                                                <SelectItem value="grapes">Grapes</SelectItem>
-                                                <SelectItem value="pineapple">Pineapple</SelectItem>
+                                                <SelectLabel>Select Time</SelectLabel>
+                                                <SelectItem value="apple">Last week</SelectItem>
+                                                <SelectItem value="banana">Last Month</SelectItem>
+                                                <SelectItem value="blueberry">Last Year</SelectItem>
+                                                <SelectItem value="grapes">Last 30 days</SelectItem>
+                                                <SelectItem value="pineapple">All Time</SelectItem>
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>

@@ -53,7 +53,7 @@ const chartConfig = {
 export function LineChartYear() {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="hidden">
         <CardTitle>Revenue Line Chart</CardTitle>
         <CardDescription>2005 - 2024</CardDescription>
       </CardHeader>
@@ -98,13 +98,10 @@ export function LineChartYear() {
           </ResponsiveContainer>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this year <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing total revenue for 2005-2024
-        </div>
+      <CardFooter className="">
+       <div className="text-center flex justify-center items-center w-full">
+        Dell (Brand) - Amazon US
+       </div>
       </CardFooter>
     </Card>
   );

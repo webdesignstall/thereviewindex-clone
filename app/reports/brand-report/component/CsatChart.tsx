@@ -63,8 +63,8 @@ export function CastChart() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Line Chart - Multiple Dell Monitors</CardTitle>
-        <CardDescription>2011 - 2024</CardDescription>
+        <CardTitle>CSAT Trend</CardTitle>
+        <CardDescription className="text-4xl font-medium">78.1</CardDescription>
       </CardHeader>
       <CardContent>
         <ChartContainer config={chartConfig}>

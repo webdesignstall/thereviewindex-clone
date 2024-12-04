@@ -13,6 +13,7 @@ import { LineChartYear } from "./component/LineChart"
 import { RatingChart } from "./component/RatingChart"
 import StraightLineChart from "./component/1080"
 import { BarChartComponent } from "./component/BarChart"
+import CreateModel from "./component/CreateModel"
 
 
 const invoices = [
@@ -67,10 +68,18 @@ export default function Compare() {
         <TableRow className="bg-neutral-800">
           <TableHead></TableHead>
           <TableHead>Dell (Brand)-Amazon</TableHead>
-          <TableHead>Select Product</TableHead>
-          <TableHead>Select Product</TableHead>
-          <TableHead>Select Product</TableHead>
-          <TableHead>Select Product</TableHead>
+          <TableHead>
+            <CreateModel />
+          </TableHead>
+          <TableHead>
+            <CreateModel />
+          </TableHead>
+          <TableHead>
+            <CreateModel />
+          </TableHead>
+          <TableHead>
+            <CreateModel />
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -125,16 +134,26 @@ export default function Compare() {
         <TableRow>
           <TableCell>1080</TableCell>
           <TableCell>
-            <div className="w-[300px] h-1 flex">
-              <div className="w-[80%] h-full bg-red-500 flex pt-2">80%</div>
-              <div className="w-[20%] h-full bg-green-500 flex pt-2">20% </div>
+            <div className="w-full h-1 flex">
+              <div className="w-[82%] h-full bg-red-500 pt-2 text-center">82%</div>
+              <div className="w-[18%] h-full bg-green-500 pt-2 text-center">18% </div>
             </div>
             <div className="grid grid-cols-3 pt-8 gap-1">
-              <div className="border p-2 h-20">MENTIONS</div>
-              <div className="border p-2 h-20">CSAT</div>
-              <div className="border p-2 h-20">AVG. RATING</div>
+              <div className="border p-2 h-20">
+                <div className="text-gray-200 pb-2">MENTIONS </div>
+                <div className="text-lg font-semibold">21 </div>
+              </div>
+              <div className="border p-2 h-20">
+                <div className="text-gray-200 pb-2">CSAT</div>
+                <div className="text-lg font-semibold">71</div>
+              </div>
+              <div className="border p-2 h-20">
+                <div className="text-gray-200 pb-2">AVG. RATING</div>
+                <div className="text-lg font-semibold">4</div>
+              </div>
               <div className="border p-2 h-20 col-span-3">
-                IPACT SCORE
+                <div className="text-gray-200">IPACT SCORE</div>
+                <div>-</div>
               </div>
             </div>
           </TableCell>
@@ -145,16 +164,26 @@ export default function Compare() {
         </TableRow>        <TableRow>
           <TableCell>2160</TableCell>
           <TableCell>
-            <div className="w-[300px] h-1 flex">
-              <div className="w-[80%] h-full bg-red-500 flex pt-2">80%</div>
-              <div className="w-[20%] h-full bg-green-500 flex pt-2">20% </div>
+            <div className="w-full h-1 flex">
+              <div className="w-[60%] h-full bg-red-500 pt-2 text-center">60%</div>
+              <div className="w-[40%] h-full bg-green-500 pt-2 text-center">40% </div>
             </div>
             <div className="grid grid-cols-3 pt-8 gap-1">
-              <div className="border p-2 h-20">MENTIONS</div>
-              <div className="border p-2 h-20">CSAT</div>
-              <div className="border p-2 h-20">AVG. RATING</div>
+              <div className="border p-2 h-20">
+                <div className="text-gray-200 pb-2">MENTIONS </div>
+                <div className="text-lg font-semibold">30 </div>
+              </div>
+              <div className="border p-2 h-20">
+                <div className="text-gray-200 pb-2">CSAT</div>
+                <div className="text-lg font-semibold">80</div>
+              </div>
+              <div className="border p-2 h-20">
+                <div className="text-gray-200 pb-2">AVG. RATING</div>
+                <div className="text-lg font-semibold">4.2</div>
+              </div>
               <div className="border p-2 h-20 col-span-3">
-                IPACT SCORE
+                <div className="text-gray-200">IPACT SCORE</div>
+                <div>-</div>
               </div>
             </div>
           </TableCell>
@@ -165,16 +194,26 @@ export default function Compare() {
         </TableRow>        <TableRow>
           <TableCell>CLARITY</TableCell>
           <TableCell>
-            <div className="w-[300px] h-1 flex">
-              <div className="w-[80%] h-full bg-red-500 flex pt-2">80%</div>
-              <div className="w-[20%] h-full bg-green-500 flex pt-2">20% </div>
+            <div className="w-full h-1 flex">
+              <div className="w-[89%] h-full bg-red-500 pt-2 text-center">89%</div>
+              <div className="w-[11%] h-full bg-green-500 pt-2 text-center">11% </div>
             </div>
             <div className="grid grid-cols-3 pt-8 gap-1">
-              <div className="border p-2 h-20">MENTIONS</div>
-              <div className="border p-2 h-20">CSAT</div>
-              <div className="border p-2 h-20">AVG. RATING</div>
+              <div className="border p-2 h-20">
+                <div className="text-gray-200 pb-2">MENTIONS </div>
+                <div className="text-lg font-semibold">17922 </div>
+              </div>
+              <div className="border p-2 h-20">
+                <div className="text-gray-200 pb-2">CSAT</div>
+                <div className="text-lg font-semibold">81</div>
+              </div>
+              <div className="border p-2 h-20">
+                <div className="text-gray-200 pb-2">AVG. RATING</div>
+                <div className="text-lg font-semibold">4.3</div>
+              </div>
               <div className="border p-2 h-20 col-span-3">
-                IPACT SCORE
+                <div className="text-gray-200">IPACT SCORE</div>
+                <div className="text-lg font-semibold">0.3</div>
               </div>
             </div>
           </TableCell>

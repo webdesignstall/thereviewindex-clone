@@ -20,16 +20,18 @@ import {
 
 // Demo data for the bar chart with features and ratings
 const chartData = [
-  { feature: "Clarity", rating: 5000 },
+  { feature: "Clarity", rating: 17000 },
+  { feature: "Display", rating: 13000 },
   { feature: "Price", rating: 10000 },
-  { feature: "Color", rating: 15000 },
-  { feature: "Reliability", rating: 20000 },
-  { feature: "Marketplace", rating: 8000 },
-  { feature: "Size", rating: 12000 },
-  { feature: "Usage", rating: 15000 },
-  { feature: "Screen", rating: 12000 },
-  { feature: "Build Quality", rating: 17000 },
-  { feature: "Design", rating: 14000 },
+  { feature: "Reliability", rating: 9000 },
+  { feature: "Color", rating: 7500 },
+  { feature: "Marketplace", rating: 6000 },
+  { feature: "Size", rating: 6500 },
+  { feature: "Usage", rating: 6200 },
+  { feature: "Screen", rating: 5100 },
+  { feature: "Usage/Gaming", rating: 5100 },
+  { feature: "Build Quality", rating: 5000 },
+  { feature: "Design", rating: 4800 },
 ];
 
 // Chart configuration
@@ -43,7 +45,7 @@ const chartConfig = {
 export function BarChartComponent() {
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="hidden">
         <CardTitle>Product Feature Ratings</CardTitle>
         <CardDescription>Demo Data: Ratings from 0k to 20k</CardDescription>
       </CardHeader>
@@ -57,7 +59,7 @@ export function BarChartComponent() {
                 tickLine={false}
                 tickMargin={10}
                 axisLine={false}
-                tickFormatter={(value) => value.slice(0, 3)} // Shorten feature name if necessary
+                tickFormatter={(value) => value} // Shorten feature name if necessary
               />
               <YAxis
                 tickLine={false}
@@ -77,13 +79,8 @@ export function BarChartComponent() {
           </ResponsiveContainer>
         </ChartContainer>
       </CardContent>
-      <CardFooter className="flex-col items-start gap-2 text-sm">
-        <div className="flex gap-2 font-medium leading-none">
-          Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-        </div>
-        <div className="leading-none text-muted-foreground">
-          Showing ratings for various product features
-        </div>
+      <CardFooter>
+        <div className="flex justify-center items-center w-full">Dell (Brand) - Amazon US</div>
       </CardFooter>
     </Card>
   );

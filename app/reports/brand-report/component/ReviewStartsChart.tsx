@@ -1,6 +1,7 @@
 'use client';
 
 import React from "react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import {
   BarChart,
   Bar,
@@ -35,7 +36,7 @@ const data = [
   { year: "2024", oneStar: 273, twoStar: 84, threeStar: 107, fourStar: 183, fiveStar: 983 },
 ];
 
-// Sort data in descending order by total review count
+// Correct sorting by total review count (fixing previous issue)
 const sortedData = data.map((item) => {
   const totalReviews =
     item.oneStar + item.twoStar + item.threeStar + item.fourStar + item.fiveStar;
@@ -44,40 +45,117 @@ const sortedData = data.map((item) => {
 
 // Colors for different review types
 const colors = {
-  oneStar: "#9d0505",    // Red
-  twoStar: "#e93838",    // Bright Red
-  threeStar: "#e7cc0f",  // Yellow
-  fourStar: "#00998b",   // Teal
-  fiveStar: "#0cb959",   // Green
+  oneStar: "#D4465C",    // Red
+  twoStar: "#F4585E",    // Bright Red
+  threeStar: "#F7C33F",  // Yellow
+  fourStar: "#5DCFC5",   // Teal
+  fiveStar: "#17AD9F",   // Green
 };
+
+// Calculate the sum of reviews for each rating type
+const calculateSums = (data: any[]) => {
+  return data.reduce(
+    (sums, item) => {
+      sums.oneStar += item.oneStar;
+      sums.twoStar += item.twoStar;
+      sums.threeStar += item.threeStar;
+      sums.fourStar += item.fourStar;
+      sums.fiveStar += item.fiveStar;
+      return sums;
+    },
+    { oneStar: 0, twoStar: 0, threeStar: 0, fourStar: 0, fiveStar: 0 }
+  );
+};
+
+const sums = calculateSums(sortedData);
 
 export default function ReviewChart() {
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <BarChart
-        data={sortedData}
-        barGap={4} // Gap between bars
-        margin={{
-          top: 20,
-          right: 30,
-          left: 20,
-          bottom: 50,
-        }}
-      >
-        <XAxis dataKey="year" label={{ value: "Year", position: "bottom", offset: 10 }} />
-        <YAxis 
-          label={{ value: "Review Count", angle: -90, position: "insideLeft" }} 
-          domain={[0, "dataMax"]} // Ensures Y-axis starts at 0
-        />
-        <Tooltip />
-        <Legend />
+    <Card>
+      <CardHeader>
+        <CardTitle>Review Stars Split Count</CardTitle>
+      </CardHeader>
+      <div className="flex">
+        <CardContent className="w-2/3">
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart
+              data={sortedData}
+              barGap={4} // Adjust gap between bars
+              margin={{
+                top: 20,
+                right: 30,
+                left: 20,
+                bottom: 60, // Adjust bottom margin for label spacing
+              }}
+              barCategoryGap={6} // Adjust space between category groups
+            >
+              {/* X-Axis: Year with label positioning and rotation for better readability */}
+              <XAxis
+                dataKey="year"
+                label={{ value: "Year", position: "bottom", offset: 10 }}
+                angle={-45} // Rotate labels for better visibility on smaller screens
+                tickMargin={10} // Add space between ticks and labels
+              />
+              {/* Y-Axis: Review Count with appropriate label positioning */}
+              <YAxis
+                label={{ value: "Review Count", angle: -90, position: "insideLeft", offset: 10 }}
+                domain={[0, "dataMax"]} // Ensures Y-axis starts at 0
+                tickMargin={10} // Space between ticks and labels
+              />
 
-        <Bar dataKey="fiveStar" stackId="a" fill={colors.fiveStar} />
-        <Bar dataKey="fourStar" stackId="a" fill={colors.fourStar} />
-        <Bar dataKey="threeStar" stackId="a" fill={colors.threeStar} />
-        <Bar dataKey="twoStar" stackId="a" fill={colors.twoStar} />
-        <Bar dataKey="oneStar" stackId="a" fill={colors.oneStar} />
-      </BarChart>
-    </ResponsiveContainer>
+              {/* Tooltip customization */}
+              <Tooltip
+                active={false} // This disables the hover effect
+                contentStyle={{ backgroundColor: 'transparent' }} // Remove hover background color
+                itemStyle={{ color: '#000' }} // Optional: change text color on hover
+              />
+
+              {/* Legend positioning */}
+              <Legend verticalAlign="top" align="center" />
+
+              {/* Bars with colors for different star ratings */}
+              <Bar dataKey="fiveStar" stackId="a" fill={colors.fiveStar} />
+              <Bar dataKey="fourStar" stackId="a" fill={colors.fourStar} />
+              <Bar dataKey="threeStar" stackId="a" fill={colors.threeStar} />
+              <Bar dataKey="twoStar" stackId="a" fill={colors.twoStar} />
+              <Bar dataKey="oneStar" stackId="a" fill={colors.oneStar} />
+            </BarChart>
+          </ResponsiveContainer>
+        </CardContent>
+
+        {/* Right Sidebar with Color Legend */}
+        <div className="w-1/3 p-4">
+          <h3 className="text-lg font-semibold mb-4">Review Count by Rating</h3>
+          {/* Color Legend */}
+          <div className="flex flex-col space-y-2">
+            {/* One Star */}
+            <div className="flex items-center">
+              <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.oneStar }}></div>
+              <span className="text-lg">1 Star: {sums.oneStar}</span>
+            </div>
+            {/* Two Star */}
+            <div className="flex items-center">
+              <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.twoStar }}></div>
+              <span className="text-lg">2 Stars: {sums.twoStar}</span>
+            </div>
+            {/* Three Star */}
+            <div className="flex items-center">
+              <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.threeStar }}></div>
+              <span className="text-lg">3 Stars: {sums.threeStar}</span>
+            </div>
+            {/* Four Star */}
+            <div className="flex items-center">
+              <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.fourStar }}></div>
+              <span className="text-lg">4 Stars: {sums.fourStar}</span>
+            </div>
+            {/* Five Star */}
+            <div className="flex items-center">
+              <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.fiveStar }}></div>
+              <span className="text-lg">5 Stars: {sums.fiveStar}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
   );
 }
