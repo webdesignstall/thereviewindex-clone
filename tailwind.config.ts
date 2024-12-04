@@ -90,6 +90,9 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('tailwind-scrollbar')],
+	variants: {
+		scrollbar: ['rounded'], // Enable rounded scrollbars if needed
+	},
 };
 export default config;
