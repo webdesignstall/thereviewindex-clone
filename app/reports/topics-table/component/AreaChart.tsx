@@ -1,3 +1,4 @@
+'use client'
 export default function AreaChartComponent() {
     return (
         <div className="w-20">
