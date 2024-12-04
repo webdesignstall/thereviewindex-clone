@@ -131,7 +131,84 @@ export default function BrandReport() {
                                 {/* <TopicsTable /> */}
                             </div>
                             <div className='col-span-2'>
-                                <DellChart />
+
+                                <div className=" border  rounded-md ">
+                                    <div
+                                        className="flex justify-between items-center border-b   px-3 py-5 bg-muted text-muted-foreground">
+                                        <div
+                                            className="leading-4 font-semibold tracking-wider flex text-xxs-r text-secondary uppercase w-full text-left justify-start">
+                                            <div className="line-clamp-1">Dell S3423DWC Curved USB-C Monitor - 34-Inch
+                                                WQHD 100Hz 4Ms 21:9 Display, USB-C Connectivity, 2 x 5w Audio Output,
+                                                16.7 Million Colors, Height/Tilt Adjustable - Silver - Amazon US
+                                            </div>
+                                        </div>
+                                        <div className="ml-6 flex-shrink-0">1826 records</div>
+                                    </div>
+                                    <div className="md:flex md:items-center p-5">
+                                        <div>
+                                            <DellChart/>
+                                        </div>
+                                        <div className="flex w-full">
+                                            <div className="mr-6 w-1/2">
+                                                <div>
+                                                    <div
+                                                        className="pb-2 mb-2 border-b text-sm text-gray-600 dark:text-gray-500 border-green-500">PRAISES
+                                                    </div>
+                                                    <div className="flex">
+                                                        <button
+                                                            className="text-gray-800 dark:text-gray-500 cursor-pointer text-left hover:bg-gray-100 dark:hover:bg-gray-800 w-full">Clarity
+                                                        </button>
+                                                    </div>
+                                                    <div className="flex">
+                                                        <button
+                                                            className="text-gray-800 dark:text-gray-500 cursor-pointer text-left hover:bg-gray-100 dark:hover:bg-gray-800 w-full">Price
+                                                        </button>
+                                                    </div>
+                                                    <div className="flex">
+                                                        <button
+                                                            className="text-gray-800 dark:text-gray-500 cursor-pointer text-left hover:bg-gray-100 dark:hover:bg-gray-800 w-full">Usage
+                                                        </button>
+                                                    </div>
+                                                    <div className="flex">
+                                                        <button
+                                                            className="text-gray-800 dark:text-gray-500 cursor-pointer text-left hover:bg-gray-100 dark:hover:bg-gray-800 w-full">Ease
+                                                            of Use
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="w-1/2">
+                                                <div>
+                                                    <div
+                                                        className="pb-2 mb-2 border-b text-sm text-gray-600 dark:text-gray-500 border-red-500">COMPLAINTS
+                                                    </div>
+                                                    <div className="flex">
+                                                        <button
+                                                            className="text-gray-800 dark:text-gray-500 cursor-pointer text-left hover:bg-gray-100 dark:hover:bg-gray-800 w-full">Reliability
+                                                        </button>
+                                                    </div>
+                                                    <div className="flex">
+                                                        <button
+                                                            className="text-gray-800 dark:text-gray-500 cursor-pointer text-left hover:bg-gray-100 dark:hover:bg-gray-800 w-full">"flicker"
+                                                        </button>
+                                                    </div>
+                                                    <div className="flex">
+                                                        <button
+                                                            className="text-gray-800 dark:text-gray-500 cursor-pointer text-left hover:bg-gray-100 dark:hover:bg-gray-800 w-full">Marketplace
+                                                        </button>
+                                                    </div>
+                                                    <div className="flex">
+                                                        <button
+                                                            className="text-gray-800 dark:text-gray-500 cursor-pointer text-left hover:bg-gray-100 dark:hover:bg-gray-800 w-full">Marketplace
+                                                            / Returns
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
