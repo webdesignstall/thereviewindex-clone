@@ -66,7 +66,7 @@ export function ProductTable() {
     <Table>
       <TableCaption>A list of products with their performance details.</TableCaption>
       <TableHeader>
-        <TableRow className="bg-neutral-800 uppercase">
+        <TableRow className="bg-neutral-100 dark:bg-neutral-800 uppercase">
           <TableHead>Product</TableHead>
           <TableHead>Channel</TableHead>
           <TableHead>Records</TableHead>

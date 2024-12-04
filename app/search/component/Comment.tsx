@@ -39,19 +39,19 @@ export function Comment() {
     return (
         <Tabs defaultValue="all" className="p-2">
             <TabsList className={cn('bg-transparent m-auto border gap-1 rounded-lg max-w-lg justify-center flex h-full')}>
-                <TabsTrigger className="border w-44 h-12 data-[state=active]:bg-neutral-800 rounded-lg" value="all">
+                <TabsTrigger className="border w-44 h-12 data-[state=active]:bg-neutral-200 dark:data-[state=active]:bg-neutral-800 rounded-lg" value="all">
                     <div>
                         <p>ALL</p>
                         <p>(1500)</p>
                     </div>
                 </TabsTrigger>
-                <TabsTrigger className="border w-44 h-12 data-[state=active]:bg-neutral-800 rounded-lg" value="positive">
+                <TabsTrigger className="border w-44 h-12 data-[state=active]:bg-neutral-200 dark:data-[state=active]:bg-neutral-800 rounded-lg" value="positive">
                     <div>
                         <p>POSITIVE</p>
                         <p>(1500)</p>
                     </div>
                 </TabsTrigger>
-                <TabsTrigger className="border w-44 h-12 data-[state=active]:bg-neutral-800 rounded-lg" value="nagative">
+                <TabsTrigger className="border w-44 h-12 data-[state=active]:bg-neutral-200 dark:data-[state=active]:bg-neutral-800 rounded-lg" value="nagative">
                     <div>
                         <p>NEGATIVE</p>
                         <p>(1500)</p>

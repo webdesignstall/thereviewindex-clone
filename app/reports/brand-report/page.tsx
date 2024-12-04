@@ -45,16 +45,64 @@ export default function BrandReport() {
                     </div>
                     <div>
                         <div className='pb-4'>
-                            <div className='flex gap-1 justify-start items-center'>
-                                <div className='border text-md font-semibold p-2'>Dell (Brand)- Amazon US</div>
-                                <div className='border text-sm font-medium'><SearchIcon size={40} className='p-2' /></div>
-                                <CreateTask />
+                            <div className='flex gap-1 justify-between items-center'>
+                                <div className="flex">
+                                    <div className='border text-md font-semibold p-2'>Dell (Brand)- Amazon US</div>
+                                    <div className='border text-sm font-medium'><SearchIcon size={40} className='p-2'/>
+                                    </div>
+                                    <CreateTask/>
+                                </div>
+
+
+                                <div className="md:flex items-center space-x-4">
+                                    <div
+                                            className=" whitespace-nowrap items-center justify-center gap-1 font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.99] group relative shrink-0  rounded-md backdrop-blur-md border hover:bg-muted text-base py-2 px-4 inline-flex">
+                                        <div className="flex items-center">
+                                            <span><svg viewBox="0 0 24 24"
+                                                                                      preserveAspectRatio="xMidYMid meet"
+                                                                                      className="h-6 w-6 p-1 mr-2"
+                                                                                      stroke="currentColor"
+                                                                                      fill="none"><path
+                                            stroke-linecap="round" strokeLinejoin="round" strokeWidth="2"
+                                            d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg></span>
+
+                                            <div className="text-sm mr-2">
+                                                <span>Filters</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                            className=" whitespace-nowrap items-center justify-center gap-1 font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.99] group relative shrink-0  rounded-md bg-primary text-primary-foreground  text-base py-2 px-4 inline-flex">
+                                        <div className="flex items-center"><span><svg viewBox="0 0 24 24"
+                                                                                      preserveAspectRatio="xMidYMid meet"
+                                                                                      className="h-6 w-6 p-1 mr-2"
+                                                                                      stroke="currentColor"
+                                                                                      fill="none"><path
+                                            stroke-linecap="round" strokeWidth="2"
+                                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></span>
+                                            <div className="text-sm mr-2">
+                                                <div className="flex items-center">...
+                                                    <button><span><svg viewBox="0 0 24 24"
+                                                                       preserveAspectRatio="xMidYMid meet"
+                                                                       className="h-6 w-6 p-1 ml-2"
+                                                                       stroke="currentColor" fill="none"><path
+                                                        stroke-linecap="round" strokeLinejoin="round"
+                                                        strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div>
                             <div className='flex pb-6 space-x-3'>
-                                <Badge className='flex justify-start p-0 pr-2 items-center rounded-xl' variant='secondary'><span><Dot /></span>Source: Amazon US</Badge>
-                                <Badge className='flex justify-start p-0 pr-2 items-center rounded-xl' variant='secondary'><span><Dot /></span>Entities: 2247</Badge>
+                                <Badge className='flex justify-start p-0 pr-2 items-center rounded-xl'
+                                       variant='secondary'><span><Dot/></span>Source: Amazon US</Badge>
+                                <Badge className='flex justify-start p-0 pr-2 items-center rounded-xl'
+                                       variant='secondary'><span><Dot/></span>Entities: 2247</Badge>
                             </div>
                         </div>
                     </div>
@@ -65,7 +113,8 @@ export default function BrandReport() {
                                     <div className='text-md font-medium pb-4'>Total Reviews</div>
                                     <div className='text-4xl font-semibold pb-2'>34,442</div>
                                     <div className='flex justify-between items-center'>
-                                        <Badge className='text-green-600 justify-start items-start' variant='secondary'><span><ChevronUp size={15} /></span>100%</Badge>
+                                        <Badge className='text-green-600 justify-start items-start' variant='secondary'><span><ChevronUp
+                                            size={15}/></span>100%</Badge>
                                         <div className='text-sm text-gray-400'>Previous Period</div>
                                     </div>
                                 </div>
@@ -88,15 +137,15 @@ export default function BrandReport() {
                         <div className='mt-4'>
                             <div className='border p-3 relative flex justify-between items-center'>
                                 <div className=''>
-                                    <span className='absolute top-5 left-6'><Search className='text-gray-300' /></span>
-                                    <Input type='search' placeholder='Search' className='pl-12 focus-visible:ring-0' />
+                                    <span className='absolute top-5 left-6'><Search className='text-gray-300'/></span>
+                                    <Input type='search' placeholder='Search' className='pl-12 focus-visible:ring-0'/>
                                 </div>
                                 <div className='mx-4'>
-                                    <Download />
+                                    <Download/>
                                 </div>
                             </div>
                             <div>
-                                <ProductTable />
+                                <ProductTable/>
                             </div>
                         </div>
                     </div>
@@ -135,14 +184,8 @@ export default function BrandReport() {
 
                                 <div className=" border  rounded-md ">
                                     <div
-                                        className="flex justify-between items-center border-b   px-3 py-5 bg-muted text-muted-foreground">
-                                        <div
-                                            className="leading-4 font-semibold tracking-wider flex text-xxs-r text-secondary uppercase w-full text-left justify-start">
-                                            <div className="line-clamp-1">Dell S3423DWC Curved USB-C Monitor - 34-Inch
-                                                WQHD 100Hz 4Ms 21:9 Display, USB-C Connectivity, 2 x 5w Audio Output,
-                                                16.7 Million Colors, Height/Tilt Adjustable - Silver - Amazon US
-                                            </div>
-                                        </div>
+                                        className="flex justify-between items-center border-b px-3 py-5 bg-muted text-muted-foreground">
+                                        Dell Curved Gaming Monitor 27 Inch Curved with 165Hz Refresh Rate, QHD Display, Black - S2722DGM - Amazon US
                                         <div className="ml-6 flex-shrink-0">1826 records</div>
                                     </div>
                                     <div className="md:flex md:items-center p-5">

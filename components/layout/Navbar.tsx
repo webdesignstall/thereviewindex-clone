@@ -6,7 +6,7 @@ import { MobileNavbar } from './NavItem'
 
 export default function Navbar() {
   return (
-    <div className='flex justify-between items-center dark:bg-neutral-900 p-4'>
+    <div className='flex justify-between items-center bg-neutral-100 dark:bg-neutral-900 p-4'>
       <div className='flex md:hidden'>
         <MobileNavbar />
       </div>

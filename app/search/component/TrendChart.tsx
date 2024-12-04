@@ -94,8 +94,8 @@ export function LineChartYear() {
             />
             <Legend />
             <ReferenceLine y={0} stroke="#000" />
-            <Bar dataKey="positive" fill="#17AD9F" stackId="stack" isAnimationActive={false} /> {/* Green for positive */}
-            <Bar dataKey="negative" fill="#D4465C" stackId="stack" isAnimationActive={false} /> {/* Red for negative */}
+            <Bar dataKey="positive" fill="#1AAE9F" stackId="stack" isAnimationActive={false} /> {/* Green for positive */}
+            <Bar dataKey="negative" fill="#D3455B" stackId="stack" isAnimationActive={false} /> {/* Red for negative */}
           </BarChart>
           </ResponsiveContainer>
         </div>
