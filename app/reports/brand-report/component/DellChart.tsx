@@ -1,101 +1,142 @@
-"use client"
+'use client';
+import React, { useEffect } from 'react';
+import Highcharts, { Options } from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
-import { TrendingUp } from "lucide-react"
-import { Pie, PieChart, Tooltip } from "recharts"
+interface PieChartProps {}
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart"
+const PieChartWithAnimation: React.FC<PieChartProps> = () => {
+  useEffect(() => {
+    (function (H: typeof Highcharts) {
+      // Custom fan-like animation
+      // @ts-ignore
+      H.wrap(H.seriesTypes.pie.prototype, 'animate', function (proceed, init) {
+        // @ts-ignore
+        const series = this;
+        const chart = series.chart;
+        const points = series.points || [];
+        const animation = series.options.animation;
+        const startAngleRad = series.startAngleRad || 0;
 
-// Chart data for Positive, Negative, and Neutral sentiments
-const chartData = [
-  { sentiment: "Positive", value: 65.8, fill: "#4caf50" }, // Green for Positive
-  { sentiment: "Negative", value: 26.9, fill: "#f44336" }, // Red for Negative
-  { sentiment: "Neutral", value: 7.3, fill: "#9e9e9e" }, // Grey for Neutral
-]
+        function fanAnimate(point: Highcharts.Point, startAngle: number) {
+          const graphic = point.graphic;
+          const args = point.shapeArgs;
 
-const chartConfig = {
-  positive: {
-    label: "Positive",
-    color: "#4caf50", // Green color
-  },
-  negative: {
-    label: "Negative",
-    color: "#f44336", // Red color
-  },
-  neutral: {
-    label: "Neutral",
-    color: "#9e9e9e", // Grey color
-  },
-} satisfies ChartConfig
+          if (graphic && args) {
+            graphic
+                .attr({
+                  start: startAngle,
+                  end: startAngle,
+                  opacity: 0,
+                })
+                .animate(
+                    {
+                      start: args.start,
+                      end: args.end,
+                      opacity: 1,
+                    },
+                    {
+                      duration: (animation as any)?.duration / points.length || 500,
+                    },
+                    function () {
+                      if (points[point.index + 1]) {
+                        fanAnimate(points[point.index + 1], args.end);
+                      }
 
-export default function DellChart() {
-  return (
-    <Card className="">
-      <div className="grid grid-cols-2 gap-10">
-        <div>
-          <CardHeader className="items-center hidden">
-            <CardTitle>Sentiment Analysis Chart</CardTitle>
-            <CardDescription>Positive, Negative, and Neutral Sentiments</CardDescription>
-          </CardHeader>
-          <CardContent className="flex-1 pb-0">
-            <ChartContainer
-              config={chartConfig}
-              className="mx-auto aspect-square max-h-[250px]"
-            >
-              <PieChart width={800} height={800}>
-                <Tooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                <Pie
-                  data={chartData}
-                  dataKey="value"
-                  nameKey="sentiment"
-                  innerRadius={60} // Donut effect
-                  outerRadius={80}
-                  fill="#8884d8"
-                  label
-                />
-              </PieChart>
-            </ChartContainer>
-          </CardContent></div>
-        <div>
-          <div className="grid grid-cols-2 gap-6 text-gray-400 font-medium">
-            <div>
-              <p className="uppercase font-medium border-b-2 py-2 border-b-green-600 my-2">
-                praises
-              </p>
-              <div>
-                <p>Clarity</p>
-                <p>Price</p>
-                <p>Usage</p>
-                <p>Easy of Use</p>
-              </div>
-            </div>
-            <div>
-              <p className="uppercase font-medium border-b-2 py-2 border-b-red-600 my-2">
-                Complaints
-              </p>
-              <div>
-                <p>Reliabiblity</p>
-                <p>Flicker</p>
-                <p>Marketplace</p>
-                <p>Marketplace/Return</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                      // On last point, finalize animation
+                      if (point.index === points.length - 1) {
+                        series.dataLabelsGroup?.animate({ opacity: 1 });
+                        chart.update({
+                          plotOptions: {
+                            pie: {
+                              innerSize: '40%',
+                              borderRadius: 8,
+                            },
+                          },
+                        });
+                        series.update(
+                            { enableMouseTracking: true },
+                            false
+                        );
+                      }
+                    }
+                );
+          }
+        }
 
-    </Card>
-  )
-}
+        if (init) {
+          // @ts-ignore
+          points.forEach((point) => {
+            if (point.graphic) {
+              point.graphic.attr({ opacity: 0 });
+            }
+          });
+        } else {
+          fanAnimate(points[0], startAngleRad);
+        }
+      });
+    })(Highcharts);
+  }, []);
+
+  const options: Options = {
+    chart: {
+      type: 'pie',
+      backgroundColor: 'transparent',
+    },
+    tooltip: {
+      headerFormat: '',
+      pointFormat:
+          '<span style="color:{point.color};">\u25cf</span> {point.name}: <b>{point.percentage:.1f}%</b>',
+    },
+    accessibility: {
+      point: {
+        valueSuffix: '%',
+      },
+    },
+    title: undefined,
+    plotOptions: {
+      pie: {
+        borderColor: 'transparent',
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '<b>{point.name}</b><br>{point.percentage:.1f}%',
+          distance: 20,
+          style: {
+            textOutline: 'none',
+            fontWeight: 'normal',
+            color: 'gray',
+          },
+        },
+        animation: {
+          duration: 2000,
+        },
+      },
+    },
+    series: [
+      {
+        type: 'pie',
+        // @ts-ignore
+        colorByPoint: true,
+        enableMouseTracking: true,
+        animation: {
+          duration: 2000,
+        },
+        data: [
+          { name: 'Positive', y: 66.0, color: '#1AAE9F' },
+          { name: 'Neutral', y: 7.2, color: '#e4e4e7' },
+          { name: 'Negative', y: 26.6, color: '#D3455B' },
+        ],
+      },
+    ],
+  };
+
+  return <HighchartsReact highcharts={Highcharts} options={options} />;
+};
+
+export default PieChartWithAnimation;
+
+
+
+
