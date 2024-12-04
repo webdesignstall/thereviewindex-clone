@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Tooltip,
     TooltipContent,
@@ -16,12 +16,68 @@ import { usePathname } from 'next/navigation'
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [activeMenu, setActiveMenu] = useState<string | null>(null); // State to track active menu item
     const [activeItem, setActiveItem] = React.useState<any>(topMenuItems[0].menu);
+    const [sidebar, setSidebar] = useState(false)
+    const [value, setValue] = useState<any>(0)
 
     const pathname = usePathname()
     const handleMenuClick = (menuName: string, menu: any) => {
         setActiveMenu(menuName); // Set the active menu name
         setActiveItem(menu); // Set the active submenu items
+        if (menu === undefined) {
+            setValue(0)
+            setSidebar(false)
+        } else if (menu.length > 0) {
+            setSidebar(true)
+            setValue(1)
+        }
     }
+
+    useEffect(() => {
+        if (pathname === '/reports/brand-report') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[1].menu)
+        } else if (pathname === '/reports/brand-report') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[1].menu)
+        } else if (pathname === '/reports/topics-table') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[1].menu)
+        } else if (pathname === '/reports/sentiment-volume-report') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[1].menu)
+        } else if (pathname === '/manage/data-sources') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[5].menu)
+        } else if (pathname === '/manage/topics') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[5].menu)
+        } else if (pathname === '/manage/catalog') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[5].menu)
+        } else if (pathname === '/settings/preferences') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[6].menu)
+        } else if (pathname === '/settings/plans') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[6].menu)
+        } else if (pathname === '/settings/profile') {
+            setSidebar(true)
+            setValue(1)
+            setActiveItem(topMenuItems[6].menu)
+        } else {
+            // setSidebar(true)
+            // setValue(1)
+        }
+    }, [pathname])
 
     return (
         <div>
@@ -34,11 +90,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     href="#"
                                     className="group flex h-9 w-10 shrink-0 items-center justify-center gap-2 rounded-lg  text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
                                 >
-                                    <Image 
-                                    width={100}
-                                    height={100}
-                                    src='/tu-berlin-logo-long-red.svg'
-                                    alt='Logo'
+                                    <Image
+                                        width={100}
+                                        height={100}
+                                        src='/tu-berlin-logo-long-red.svg'
+                                        alt='Logo'
                                     />
                                 </Link>
                                 <TooltipProvider>
@@ -64,15 +120,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     <div className='flex flex-col flex-1 print:w-full'>
                         <main className='md:block flex-grow overflow-auto overflow-x-hidden focus:outline-none print:block print:w-screen  print:overflow-visible print:h-auto '>
                             <div className='h-screen flex overflow-hidden print:overflow-visible print:h-auto bg-background'>
-                                <div className={`absolute md:static z-30 h-full hidden lg:inline-block inset-y-0 right-0 max-w-3xs overflow-hidden ${parseInt(activeItem?.length) > 0 ? 'w-56' : 'w-0'}`}>
+                                <div className={`absolute md:static z-30 h-full hidden lg:inline-block inset-y-0 right-0 max-w-3xs overflow-hidden ${sidebar ? 'w-56' : 'w-0'}`}>
                                     <ul className='border-r dark:border-gray-800 h-screen'>
-                                        <li className='py-4 cursor-pointer flex justify-end items-center'>
-                                            <ChevronLeft className='border border-gray-800 rounded-l-2xl w-12 text-gray-400 hover:text-gray-50 duration-200' size={30} />
+                                        <li onClick={() => setSidebar(!sidebar)} className={`py-4 cursor-pointer flex justify-end items-center  ${value === 0 ? 'hidden' : 'flex'}`}>
+                                            <ChevronLeft className={` top-4 absolute   rounded-l-2xl w-12 text-gray-400 hover:text-gray-50 duration-200 ${sidebar === true ? 'hover:-translate-x-2' : 'rotate-180 left-16 hover:translate-x-2'}`} size={30} />
                                         </li>
                                         {
                                             activeItem?.map((item: any, index: number) => (
                                                 <li key={index} className=''>
-                                                    <Link className={` ${pathname === item.link ? 'bg-neutral-700 dark:text-white': ''} ${index === 0 ? 'text-sm text-gray-300 font-semibold p-2 bg-neutral-950 uppercase w-full block' : 'dark:hover:bg-neutral-700 hover:bg-neutral-200 duration-200 cursor-pointer p-2 text-sm dark:text-neutral-400 dark:hover:text-neutral-50 block'}`} href={item.link}>{item.title}</Link>
+                                                    <Link className={` ${pathname === item.link ? 'bg-neutral-700 dark:text-white' : ''} ${index === 0 ? 'text-xs text-gray-300 font-semibold p-2 bg-neutral-950 uppercase w-full block' : 'dark:hover:bg-neutral-700 hover:bg-neutral-200 duration-200 cursor-pointer p-2 text-sm dark:text-neutral-400 dark:hover:text-neutral-50 block'}`} href={item.link}>{item.title}</Link>
                                                 </li>
                                             ))
                                         }
@@ -82,7 +138,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                                     <main className='flex-grow overflow-auto overflow-x-hidden focus:outline-none print:block print:w-screen print:h-auto print:overflow-visible'>
                                         <div className=''>
                                             <Navbar />
-                                            <div className='md:p-8 p-3'>
+                                            <div className=''>
                                                 {children}
                                             </div>
                                         </div>
