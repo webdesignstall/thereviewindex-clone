@@ -2,7 +2,7 @@ import React from 'react'
 import SentimentChart from './component/ValueChart'
 import { Badge } from '@/components/ui/badge'
 import { Dot, SearchIcon } from 'lucide-react'
-import { ReportTable } from '../topics-table/component/ReportTable'
+import  ReportTable  from '../topics-table/component/ReportTable'
 
 export default function Sentiment() {
   return (
