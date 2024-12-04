@@ -1,16 +1,18 @@
 'use client'
-import React, {useState} from 'react'
-import ReportTable  from './component/ReportTable'
+import React, { useState } from 'react'
+import ReportTable from './component/ReportTable'
 import { Badge } from '@/components/ui/badge'
-import { ArrowRight, Dot, SearchIcon} from 'lucide-react'
+import { ArrowRight, Dot, SearchIcon } from 'lucide-react'
 import Comment from './component/Comment'
+import TableSidebar from './component/TableSidebar'
+import CreateTask from '@/components/CreateTask'
 
 export default function TopicsTable() {
 
     const [isComment, setIsComment] = useState(false)
-    
+
     return (
-        <div>
+        <div className=''>
             <div>
                 <div>
 
@@ -25,24 +27,25 @@ export default function TopicsTable() {
                                     <div className='flex gap-1 justify-start items-center'>
                                         <div className='border text-md font-semibold p-2'>Dell (Brand)- Amazon US</div>
                                         <div className='border text-sm font-medium'><SearchIcon size={40}
-                                                                                                className='p-2'/></div>
+                                            className='p-2' /></div>
+                                            <CreateTask />
                                     </div>
                                 </div>
                                 <div>
                                     <div className='flex pb-6 space-x-3'>
                                         <Badge className='flex justify-start p-0 pr-2 items-center rounded-xl'
-                                               variant='secondary'><span><Dot/></span>Source: Amazon US</Badge>
+                                            variant='secondary'><span><Dot /></span>Source: Amazon US</Badge>
                                         <Badge className='flex justify-start p-0 pr-2 items-center rounded-xl'
-                                               variant='secondary'><span><Dot/></span>Entities: 2247</Badge>
+                                            variant='secondary'><span><Dot /></span>Entities: 2247</Badge>
                                     </div>
                                 </div>
                             </div>
 
-                            <ReportTable setIsComment={setIsComment}/>
+                            <ReportTable setIsComment={setIsComment} />
                         </div>
                         <div className={`${isComment ? 'block border-l relative' : 'hidden'}`}>
-                            <div onClick={() => setIsComment(false)} className='fixed top-14 cursor-pointer border px-3 py-2'><ArrowRight/></div>
-                            <Comment/>
+                            <div onClick={() => setIsComment(false)} className='fixed top-14 cursor-pointer border px-3 py-2'><ArrowRight /></div>
+                            <TableSidebar />
                         </div>
                     </div>
                 </div>

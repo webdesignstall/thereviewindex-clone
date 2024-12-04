@@ -5,7 +5,7 @@ import { PlanChart } from '@/app/component/PlanChart'
 
 export default function Plans() {
     return (
-        <div>
+        <div className='p-3 md:p-6 lg:p-10'>
             <div className='max-w-7xl m-auto'>
                 <div className='pb-8'>
                     <p className='text-2xl font-semibold'>Plans</p>

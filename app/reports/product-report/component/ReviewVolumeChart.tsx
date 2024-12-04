@@ -126,6 +126,35 @@ export default function ReviewVolumeChart() {
             <Bar dataKey="oneStar" stackId="a" fill={colors.oneStar} />
           </BarChart>
         </ResponsiveContainer>
+
+        {/* Color Legend and Sums Section */}
+        <div className="flex flex-col mt-6">
+          {/* One Star */}
+          <div className="flex items-center">
+            <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.oneStar }}></div>
+            <span className="text-lg">1 Star: {sums.oneStar}</span>
+          </div>
+          {/* Two Star */}
+          <div className="flex items-center mt-2">
+            <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.twoStar }}></div>
+            <span className="text-lg">2 Stars: {sums.twoStar}</span>
+          </div>
+          {/* Three Star */}
+          <div className="flex items-center mt-2">
+            <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.threeStar }}></div>
+            <span className="text-lg">3 Stars: {sums.threeStar}</span>
+          </div>
+          {/* Four Star */}
+          <div className="flex items-center mt-2">
+            <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.fourStar }}></div>
+            <span className="text-lg">4 Stars: {sums.fourStar}</span>
+          </div>
+          {/* Five Star */}
+          <div className="flex items-center mt-2">
+            <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.fiveStar }}></div>
+            <span className="text-lg">5 Stars: {sums.fiveStar}</span>
+          </div>
+        </div>
       </CardContent>
     </Card>
   );

@@ -10,7 +10,7 @@ import Bookmarks from './component/Bookmarks'
 
 export default function Homepage() {
   return (
-    <div className='pb-12'>
+    <div className='pb-12 p-3 md:p-8'>
       <div>
         {/* Adding animation for the heading */}
         <motion.div

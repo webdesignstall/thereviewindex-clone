@@ -4,7 +4,7 @@ import { CreateData } from './component/CreateData'
 
 export default function Manage() {
     return (
-        <div className='pt-8 md:pt-3'>
+        <div className='pt-8 md:pt-3 p-3 md:p-6 lg:p-10'>
             <div className='pb-12'>
                 <div className='flex justify-between items-center'>
                     <div>

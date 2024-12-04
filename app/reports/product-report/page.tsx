@@ -1,10 +1,15 @@
 import { Badge } from '@/components/ui/badge'
 import { ChevronUp, Dot, SearchIcon } from 'lucide-react'
 import React from 'react'
+import TopicsChart from './component/TopicsChart'
+import WordCloud from './component/WordCloud'
+import CreateTask from '@/components/CreateTask'
+import { ReviewRatingChart } from './component/ReviewReatingChart'
+import ReviewChart from './component/ReviewStartsChart'
 
 export default function ProductReport() {
   return (
-    <div>
+    <div className='p-3 md:p-6 lg:p-10'>
       <div className='py-2'>
         <h2 className='text-xl font-semibold'>Product Report</h2>
       </div>
@@ -13,6 +18,7 @@ export default function ProductReport() {
           <div className='flex gap-1 justify-start items-center'>
             <div className='border text-md font-semibold p-2'>Dell (Brand)- Amazon US</div>
             <div className='border text-sm font-medium'><SearchIcon size={40} className='p-2' /></div>
+            <CreateTask />
           </div>
         </div>
         <div>
@@ -27,7 +33,7 @@ export default function ProductReport() {
           <div className='border rounded-md p-4'>
             <div>
               <div className='text-md font-medium pb-4'>Total Reviews</div>
-              <div className='text-4xl font-semibold pb-2'>34,442</div>
+              <div className='text-4xl font-semibold pb-2'>73</div>
               <div className='flex justify-between items-center'>
                 <Badge className='text-green-600 justify-start items-start' variant='secondary'><span><ChevronUp size={15} /></span>100%</Badge>
                 <div className='text-sm text-gray-400'>Previous Period</div>
@@ -45,6 +51,22 @@ export default function ProductReport() {
               <div className='text-md font-medium pb-4'>CSAT rating</div>
               <div className='text-4xl font-semibold pb-2'>78.1</div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div className='grid lg:grid-cols-2 gap-4 grid-col-1'>
+          <div>
+            <ReviewRatingChart />
+          </div>
+          <div>
+            <ReviewChart />
+          </div>
+          <div>
+            <TopicsChart />
+          </div>
+          <div>
+            <WordCloud />
           </div>
         </div>
       </div>
