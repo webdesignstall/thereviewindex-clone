@@ -1,3 +1,4 @@
+'use client'
 import {
     Table,
     TableBody,
@@ -8,6 +9,7 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table"
+import {AreaChartComponent} from "./AreaChart";
   
   const topics = [
     {
@@ -60,16 +62,17 @@ import {
     },
   ]
   
-  export function ReportTable() {
+  export function ReportTable({setIsComment}  : {setIsComment?: any}) {
     return (
-      <Table>
+      <Table className='border-none'>
         <TableCaption>A summary of topic discussions, feedback, and impact scores.</TableCaption>
         <TableHeader>
           <TableRow className="uppercase bg-neutral-800">
             <TableHead>Topic</TableHead>
             <TableHead>Records</TableHead>
             <TableHead>Positive Count</TableHead>
-            <TableHead>Chart Line</TableHead>
+            <TableHead></TableHead>
+            <TableHead></TableHead>
             <TableHead>Negative Count</TableHead>
             <TableHead>Impact Score</TableHead>
           </TableRow>
@@ -77,16 +80,35 @@ import {
         <TableBody>
           {topics.map((topic) => (
             <TableRow key={topic.topic}>
-              <TableCell className="font-medium">{topic.topic}</TableCell>
-              <TableCell>{topic.records}</TableCell>
+              <TableCell className="font-medium cursor-pointer" onClick={() => setIsComment(true)}>{topic.topic}</TableCell>
+              <TableCell>
+                <div className='flex gap-3 justify-center items-center'>
+                  {topic.records}
+                  <AreaChartComponent/>
+                </div>
+
+              </TableCell>
               <TableCell>{topic.positiveCount}</TableCell>
-              <TableCell>{topic.chartLine}</TableCell>
+              <TableCell className={'relative'}>
+                <div className="w-full truncate">
+                  <div className="absolute h-full top-0 right-0" style={{width: `${topic.positiveCount}%`}}>
+                    <div className="h-full" style={{backgroundColor: 'rgb(26, 174, 159)'}}></div>
+                  </div>
+                </div>
+              </TableCell>
+              <TableCell className={'relative'}>
+                <div className="w-full truncate">
+                  <div className="absolute h-full top-0 left-0" style={{width: `${topic.negativeCount}%`}}>
+                    <div className="h-full" style={{backgroundColor: 'rgb(211, 69, 91)'}}></div>
+                  </div>
+                </div>
+              </TableCell>
               <TableCell>{topic.negativeCount}</TableCell>
               <TableCell>{topic.impactScore}</TableCell>
             </TableRow>
           ))}
         </TableBody>
-        <TableFooter>
+        {/*<TableFooter>
           <TableRow>
             <TableCell colSpan={2}>Total</TableCell>
             <TableCell>{topics.reduce((sum, topic) => sum + topic.positiveCount, 0)}</TableCell>
@@ -94,11 +116,11 @@ import {
             <TableCell>{topics.reduce((sum, topic) => sum + topic.negativeCount, 0)}</TableCell>
             <TableCell>
               {(
-                topics.reduce((sum, topic) => sum + topic.impactScore, 0) / topics.length
+                  topics.reduce((sum, topic) => sum + topic.impactScore, 0) / topics.length
               ).toFixed(2)}
             </TableCell>
           </TableRow>
-        </TableFooter>
+        </TableFooter>*/}
       </Table>
     )
   }
