@@ -50,7 +50,7 @@ const PieChartWithAnimation: React.FC<PieChartProps> = () => {
                           plotOptions: {
                             pie: {
                               innerSize: '40%',
-                              borderRadius: 8,
+                              borderRadius: 'none',
                             },
                           },
                         });
@@ -96,6 +96,8 @@ const PieChartWithAnimation: React.FC<PieChartProps> = () => {
     title: undefined,
     plotOptions: {
       pie: {
+        innerSize: '40%',
+        borderRadius: 'none',
         borderColor: 'transparent',
         allowPointSelect: true,
         cursor: 'pointer',
