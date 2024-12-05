@@ -1,3 +1,4 @@
+/*
 'use client';
 
 import React from "react";
@@ -89,31 +90,31 @@ export default function ReviewChart() {
               }}
               barCategoryGap={6} // Adjust space between category groups
             >
-              {/* X-Axis: Year with label positioning and rotation for better readability */}
+              {/!* X-Axis: Year with label positioning and rotation for better readability *!/}
               <XAxis
                 dataKey="year"
                 label={{ value: "Year", position: "bottom", offset: 10 }}
                 angle={-45} // Rotate labels for better visibility on smaller screens
                 tickMargin={10} // Add space between ticks and labels
               />
-              {/* Y-Axis: Review Count with appropriate label positioning */}
+              {/!* Y-Axis: Review Count with appropriate label positioning *!/}
               <YAxis
                 label={{ value: "Review Count", angle: -90, position: "insideLeft", offset: 10 }}
                 domain={[0, "dataMax"]} // Ensures Y-axis starts at 0
                 tickMargin={10} // Space between ticks and labels
               />
 
-              {/* Tooltip customization */}
+              {/!* Tooltip customization *!/}
               <Tooltip
                 active={false} // This disables the hover effect
                 contentStyle={{ backgroundColor: 'transparent' }} // Remove hover background color
                 itemStyle={{ color: '#000' }} // Optional: change text color on hover
               />
 
-              {/* Legend positioning */}
+              {/!* Legend positioning *!/}
               <Legend verticalAlign="top" align="center" />
 
-              {/* Bars with colors for different star ratings */}
+              {/!* Bars with colors for different star ratings *!/}
               <Bar dataKey="fiveStar" stackId="a" fill={colors.fiveStar} />
               <Bar dataKey="fourStar" stackId="a" fill={colors.fourStar} />
               <Bar dataKey="threeStar" stackId="a" fill={colors.threeStar} />
@@ -123,32 +124,32 @@ export default function ReviewChart() {
           </ResponsiveContainer>
         </CardContent>
 
-        {/* Right Sidebar with Color Legend */}
+        {/!* Right Sidebar with Color Legend *!/}
         <div className="w-1/3 p-4">
           <h3 className="text-lg font-semibold mb-4">Review Count by Rating</h3>
-          {/* Color Legend */}
+          {/!* Color Legend *!/}
           <div className="flex flex-col space-y-2">
-            {/* One Star */}
+            {/!* One Star *!/}
             <div className="flex items-center">
               <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.oneStar }}></div>
               <span className="text-lg">1 Star: {sums.oneStar}</span>
             </div>
-            {/* Two Star */}
+            {/!* Two Star *!/}
             <div className="flex items-center">
               <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.twoStar }}></div>
               <span className="text-lg">2 Stars: {sums.twoStar}</span>
             </div>
-            {/* Three Star */}
+            {/!* Three Star *!/}
             <div className="flex items-center">
               <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.threeStar }}></div>
               <span className="text-lg">3 Stars: {sums.threeStar}</span>
             </div>
-            {/* Four Star */}
+            {/!* Four Star *!/}
             <div className="flex items-center">
               <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.fourStar }}></div>
               <span className="text-lg">4 Stars: {sums.fourStar}</span>
             </div>
-            {/* Five Star */}
+            {/!* Five Star *!/}
             <div className="flex items-center">
               <div className="w-4 h-4 mr-2" style={{ backgroundColor: colors.fiveStar }}></div>
               <span className="text-lg">5 Stars: {sums.fiveStar}</span>
@@ -159,3 +160,136 @@ export default function ReviewChart() {
     </Card>
   );
 }
+*/
+
+
+
+'use client'
+import React from 'react';
+import Highcharts, { Options } from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
+
+const ReviewVolumeChart: React.FC = () => {
+  const chartOptions = {
+    chart: {
+      type: 'column',
+      backgroundColor: 'transparent',
+      height: 480,
+    },
+    title: {
+      text: 'Review Stars Split Count',
+      align: 'left',
+      style: {
+        color: '#000000',
+        fontSize: '18px',
+      },
+    },
+    xAxis: {
+      categories: ['2005', '2010', '2015', '2020'], // Four categories (years)
+      labels: {
+        style: {
+          color: '#000000',
+        },
+      },
+    },
+    yAxis: {
+      min: 0,
+      max: 5000,
+      title: {
+        text: undefined,
+        style: {
+          color: '#000000',
+        },
+      },
+      labels: {
+        style: {
+          color: '#000000',
+        },
+      },
+      gridLineWidth: 0,
+    },
+
+    legend: {
+      enabled: true,
+      layout: 'vertical', // Vertical layout for better space distribution
+      align: 'right',
+      verticalAlign: 'middle',
+      floating: false,
+      itemStyle: {
+        color: '#000000',
+      },
+    },
+
+    tooltip: {
+      headerFormat: '<span style="font-size:10px">{point.key}</span><br/>',
+      pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>',
+      shared: true,
+      useHTML: true,
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.30,
+        groupPadding: 0.02,
+        stacking: 'normal',
+        dataLabels: {
+          enabled: false,
+        },
+      },
+    },
+    series: [
+      {
+        name: 'One Star Review',
+        data: [1500, 2500, 3000, 3200], // 4 data points (one for each category)
+        color: 'rgb(84, 190, 238)',
+        cursor: 'pointer',
+        borderRadius: 'none',
+      },
+      {
+        name: 'Two Star Review',
+        data: [1200, 2000, 2500, 2700], // 4 data points (one for each category)
+        color: 'rgb(172, 86, 174)',
+        cursor: 'pointer',
+        borderRadius: 'none',
+      },
+      {
+        name: 'Three Star Review',
+        data: [1000, 1500, 2000, 2300], // 4 data points (one for each category)
+        color: 'rgb(255, 205, 52)',
+        cursor: 'pointer',
+        borderRadius: 'none',
+      },
+      {
+        name: 'Four Star Review',
+        data: [500, 1000, 1500, 1800], // 4 data points (one for each category)
+        color: 'rgb(20, 203, 196)',
+        cursor: 'pointer',
+        borderRadius: 'none',
+      },
+      {
+        name: 'Five Star Review',
+        data: [0, 500, 1000, 1400], // 4 data points (one for each category)
+        color: 'rgb(232, 131, 58)',
+        cursor: 'pointer',
+        borderRadius: 'none',
+      },
+      {
+        name: 'Six Star Review',
+        data: [402, 1183, 800, 1000], // 4 data points (one for each category)
+        color: 'rgb(101, 112, 124)',
+        cursor: 'pointer',
+        borderRadius: 'none',
+      },
+      // Add additional series here if needed, each with 4 data points
+    ],
+  };
+
+
+  return (
+      <div className='border'>
+        <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+      </div>
+  );
+};
+
+// @ts-ignore
+export default ReviewVolumeChart;
