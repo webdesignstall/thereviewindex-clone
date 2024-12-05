@@ -90,6 +90,9 @@ const TopicsChartComponent: React.FC = () => {
         legend: {
             enabled: false, // Disable the legend
         },
+        credits: {
+            enabled: false  // Disable the Highcharts credits (remove "highcharts.com" text)
+        },
     };
 
     return (
