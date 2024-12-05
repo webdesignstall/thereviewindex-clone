@@ -1,3 +1,4 @@
+/*
 'use client';
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -88,7 +89,7 @@ export default function ReviewVolumeChart() {
             }}
             barCategoryGap={10} // Adjust space between category groups
           >
-            {/* X-Axis: Year with label positioning and rotation for better readability */}
+            {/!* X-Axis: Year with label positioning and rotation for better readability *!/}
             <XAxis
               dataKey="year"
               label={{ value: "Year", position: "bottom", offset: 10 }}
@@ -97,7 +98,7 @@ export default function ReviewVolumeChart() {
               axisLine={false} // Removes the axis line
               tickLine={false} // Removes the tick marks
             />
-            {/* Y-Axis: Review Count with appropriate label positioning */}
+            {/!* Y-Axis: Review Count with appropriate label positioning *!/}
             <YAxis
               label={{ value: "Review Count", angle: -90, position: "insideLeft", offset: 10 }}
               domain={[0, "dataMax"]} // Ensures Y-axis starts at 0
@@ -108,17 +109,17 @@ export default function ReviewVolumeChart() {
             />
 
 
-            {/* Tooltip customization */}
+            {/!* Tooltip customization *!/}
             <Tooltip
               active={false} // This disables the hover effect
               contentStyle={{ backgroundColor: 'transparent' }} // Remove hover background color
               itemStyle={{ color: '#000' }} // Optional: change text color on hover
             />
 
-            {/* Legend positioning */}
-            {/* <Legend verticalAlign="top" align="center" /> */}
+            {/!* Legend positioning *!/}
+            {/!* <Legend verticalAlign="top" align="center" /> *!/}
 
-            {/* Bars with colors for different star ratings */}
+            {/!* Bars with colors for different star ratings *!/}
             <Bar dataKey="fiveStar" stackId="a" fill={colors.fiveStar} />
             <Bar dataKey="fourStar" stackId="a" fill={colors.fourStar} />
             <Bar dataKey="threeStar" stackId="a" fill={colors.threeStar} />
@@ -130,3 +131,136 @@ export default function ReviewVolumeChart() {
     </Card>
   );
 }
+*/
+
+
+'use client'
+import React from 'react';
+import Highcharts, { Options } from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
+
+const ReviewVolumeChart: React.FC = () => {
+  const chartOptions = {
+    chart: {
+      type: 'column',
+      backgroundColor: 'transparent',
+      height: 480
+    },
+    title: {
+      text: 'Review Volume Trend',
+      align: 'left',
+      style: {
+        color: '#000000', // Light text color for dark mode
+        fontSize: '18px',
+      },
+    },
+    xAxis: {
+      categories: [
+        '2006', '2008', '2010', '2012', '2014',
+        '2016', '2018', '2020', '2022', '2024'
+      ],
+      labels: {
+        style: {
+          color: '#000000', // White text for dark mode
+        }
+      }
+    },
+    yAxis: {
+      min: 0,
+      max: 5000,
+      title: {
+        text: undefined,
+        style: {
+          color: '#000000', // White text for dark mode
+        }
+      },
+      labels: {
+        style: {
+          color: '#000000', // White text for dark mode
+        }
+      },
+      gridLineWidth: 0
+    },
+
+    legend: {
+      enabled: true,
+      align: 'leftBottom',
+      verticalAlign: 'bottom',
+      horizontalAlign: 'bottom',
+      itemStyle: {
+        color: '#000000', // White text for dark mode
+      },
+    },
+    tooltip: {
+      headerFormat: '<span style="font-size:10px">{point.key}</span><br/>',
+      pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>',
+      shared: true,
+      useHTML: true
+    },
+    plotOptions: {
+      column: {
+        pointPadding: 0.30, // Controls padding between columns
+        groupPadding: 0.02, // Controls padding between column groups
+        stacking: 'normal',
+        dataLabels: {
+          enabled: false
+        }
+      }
+    },
+    series: [
+      {
+        name: 'Dell E2414HM 24" Screen LED-Lit Monitor - Amazon US',
+        data: [0, 0, 0, 0, 1500, 2500, 3000, 3200, 3100, 2800, 200, 450, 800, 900],
+        color: 'rgb(84, 190, 238)',
+        cursor: 'pointer',
+        borderRadius: 'none',
+      },
+      {
+        name: 'Dell UltraSharp U2412M 24-Inch Screen LED-Lit Monitor, Black - Amazon US',
+        data: [0, 0, 0, 200, 1200, 2000, 2500, 2700, 2600, 2400, 200, 450, 800, 900],
+        color: 'rgb(172, 86, 174)',
+        cursor: 'pointer',
+        borderRadius: 'none'
+      },
+      {
+        name: 'Dell Gaming S2716DGR 27.0" QHD Wide 1440p Screen LED-Lit Monitor with G-SYNC - Amazon US',
+        data: [0, 0, 0, 0, 1000, 1500, 2000, 2300, 2200, 2100, 200, 450, 800, 900],
+        color: 'rgb(255, 205, 52)',
+        cursor: 'pointer',
+        borderRadius: 'none'
+      },
+      {
+        name: 'Dell S3423DWC Curved USB-C Monitor - 34-Inch WQHD  100Hz 4Ms 21:9 Display, USB-C Connectivity, 2 x 5w Audio …',
+        data: [0, 0, 0, 0, 500, 1000, 1500, 1800, 1700, 1600, 200, 450, 800, 900],
+        color: 'rgb(20, 203, 196)',
+        cursor: 'pointer',
+        borderRadius: 'none'
+      },
+      {
+        name: 'Dell Curved Gaming Monitor 27 Inch Curved with 165Hz Refresh Rate, QHD  Display, Black - S2722DGM - Amazon US',
+        data: [0, 0, 0, 0, 0, 500, 1000, 1400, 1500, 1300, 200, 450, 800, 900],
+        color: 'rgb(232, 131, 58)',
+        cursor: 'pointer',
+        borderRadius: 'none'
+      },
+      {
+        name: 'Others',
+        data: [24, 24, 78, 402, 402, 1183, 800, 1000, 1100, 1200, 200, 450, 800, 900],
+        color: 'rgb(101, 112, 124)',
+        cursor: 'pointer',
+        borderRadius: 'none'
+      }
+    ]
+  };
+
+
+  return (
+      <div className='border'>
+        <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+      </div>
+  );
+};
+
+// @ts-ignore
+export default ReviewVolumeChart;
+

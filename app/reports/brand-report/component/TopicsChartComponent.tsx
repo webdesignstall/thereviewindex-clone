@@ -6,12 +6,14 @@ import HighchartsReact from 'highcharts-react-official';
 const TopicsChartComponent: React.FC = () => {
     const chartOptions: Options = {
         chart: {
-            type: 'column',
+            type: 'normal',
             height: 480,
+            backgroundColor: 'transparent',
         },
         title: {
-            text: 'Topics & Sentiment',
+            text: '<p class="text-neutral-700 dark:text-neutral-50">Topics & Sentiment</p>',
             align: 'left',
+            useHTML: true,
         },
         xAxis: {
             categories: [
@@ -19,6 +21,12 @@ const TopicsChartComponent: React.FC = () => {
                 'Marketplace', 'Size', 'Usage', 'Screen', 'Gaming',
                 'Build Quality', 'Design', 'Installation & Assembly',
             ],
+            labels: {
+                useHTML: true, // Enables HTML rendering
+                formatter: function () {
+                    return `<span class="dark:text-neutral-50 text-black">${this.value}</span>`;
+                },
+            },
         },
         yAxis: {
             title: {
@@ -27,10 +35,20 @@ const TopicsChartComponent: React.FC = () => {
             min: -5000,
             max: 20000,
             labels: {
-                format: '{value}',
+                useHTML: true, // Enable HTML rendering
+                formatter: function () {
+                    // Check if dark mode is active
+                    const isDarkMode = document.documentElement.classList.contains('dark');
+                    const color = isDarkMode ? '#ffffff' : '#333333'; // Light or dark color
+
+                    return `<span style="color: ${color};">${this.value}</span>`;
+                },
             },
-            opposite: true,
+            gridLineWidth: 0, // Removes the grid lines on the Y-axis
+            opposite: true,    // Keeps the Y-axis on the right
+            lineWidth: 0,      // Removes the Y-axis line
         },
+
         plotOptions: {
             column: {
                 stacking: 'normal', // Enables stacking
@@ -40,7 +58,8 @@ const TopicsChartComponent: React.FC = () => {
                     enabled: false,
                     format: '{y}'
                 },
-                borderWidth: 0,
+                borderWidth: 0,  // Ensure no border width
+                borderColor: 'transparent',  // Ensure no border color
             },
         },
         series: [
@@ -50,8 +69,9 @@ const TopicsChartComponent: React.FC = () => {
                 data: [
                     14679, 8207, 8258, 3768, 5284, 2742, 4113, 4490, 3194, 3962, 3596, 3464,
                 ],
-                color: '#00b894', // Green for positive
-                cursor: 'pointer'
+                color: '#1AAE9F', // Green for positive
+                cursor: 'pointer',
+                borderRadius: 'none'
             },
             {
                 type: 'column',
@@ -59,8 +79,9 @@ const TopicsChartComponent: React.FC = () => {
                 data: [
                     -1794, -2550, -792, -2980, -947, -2081, -415, -274, -827, -957, -272, -234,
                 ],
-                color: '#d63031', // Red for negative
-                cursor: 'pointer'
+                color: '#D3455B', // Red for negative
+                cursor: 'pointer',
+                borderRadius: 'none'
             },
         ],
         tooltip: {
@@ -78,4 +99,5 @@ const TopicsChartComponent: React.FC = () => {
     );
 };
 
+// @ts-ignore
 export default TopicsChartComponent;
