@@ -10,6 +10,7 @@ import {
     TableRow,
   } from "@/components/ui/table"
 import AreaChartComponent from "./AreaChart";
+import BarChart from "@/app/reports/topics-table/component/BarChart";
 
 const topics = [
   { topic: "Climate Change 1", records: 120, positiveCount: 85, chartLine: "50%", negativeCount: 35, impactScore: 8.7, topicValue: 40 },
@@ -43,8 +44,8 @@ export default function ReportTable({setIsComment}  : {setIsComment?: any}) {
             <TableHead className='border-r border-r-gray-300 dark:border-r-neutral-700'>Topic</TableHead>
             <TableHead className='border-r border-r-gray-300 dark:border-r-neutral-700'>Records</TableHead>
             <TableHead className='border-r border-r-gray-300 dark:border-r-neutral-700'>Positive Count</TableHead>
-            <TableHead className='border-r border-r-gray-300 dark:border-r-neutral-700'></TableHead>
-            <TableHead className='border-r border-r-gray-300 dark:border-r-neutral-700'></TableHead>
+            <TableHead className='w-[200px] border-r border-r-gray-300 dark:border-r-neutral-700'></TableHead>
+            <TableHead className='w-[200px] border-r border-r-gray-300 dark:border-r-neutral-700'></TableHead>
             <TableHead className='border-r border-r-gray-300 dark:border-r-neutral-700'>Negative Count</TableHead>
             <TableHead>Impact Score</TableHead>
           </TableRow>
@@ -61,17 +62,19 @@ export default function ReportTable({setIsComment}  : {setIsComment?: any}) {
 
               </TableCell>
               <TableCell>{topic.positiveCount}</TableCell>
-              <TableCell className={'relative'}>
-                <div className="w-full truncate">
-                  <div className="absolute h-full top-0 right-0" style={{width: `${topic.positiveCount}%`}}>
-                    <div className="h-full" style={{backgroundColor: 'rgb(26, 174, 159)'}}></div>
-                  </div>
-                </div>
-              </TableCell>
-              <TableCell className={'relative'}>
-                <div className="w-full truncate">
-                  <div className="absolute h-full top-0 left-0" style={{width: `${topic.negativeCount}%`}}>
-                    <div className="h-full" style={{backgroundColor: 'rgb(211, 69, 91)'}}></div>
+                <TableCell className={'relative'}>
+                    <div className="w-full truncate">
+                        <div className="absolute h-full top-0 left-0 w-[220px]">
+                            {/* @ts-ignore */}
+                            <BarChart chartValue={topic.positiveCount}/>
+                        </div>
+                    </div>
+                </TableCell>
+                <TableCell className={'relative'}>
+                    <div className="w-full truncate">
+                    <div className="absolute h-full top-0 left-0 w-[220px]">
+                        {/* @ts-ignore */}
+                      <BarChart chartValue={-topic.negativeCount} negative={true}/>
                   </div>
                 </div>
               </TableCell>

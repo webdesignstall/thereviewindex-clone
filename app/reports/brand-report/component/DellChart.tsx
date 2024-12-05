@@ -132,6 +132,9 @@ const PieChartWithAnimation: React.FC<PieChartProps> = () => {
         ],
       },
     ],
+    credits: {
+      enabled: false  // Disable the Highcharts credits (remove "highcharts.com" text)
+    },
   };
 
   return <HighchartsReact highcharts={Highcharts} options={options} />;
