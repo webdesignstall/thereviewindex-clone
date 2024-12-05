@@ -32,7 +32,7 @@ export default function Sentiment() {
                                                                   className="h-6 w-6 p-1 mr-2"
                                                                   stroke="currentColor"
                                                                   fill="none"><path
-                        stroke-linecap="round" strokeLinejoin="round" stroke-width="2"
+                        strokeLinecap="round" strokeLinejoin="round" stroke-width="2"
                         d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg></span>
                       <div className="text-sm mr-2"><span>Filters</span></div>
                     </div>
@@ -44,7 +44,7 @@ export default function Sentiment() {
                                                                   className="h-6 w-6 p-1 mr-2"
                                                                   stroke="currentColor"
                                                                   fill="none"><path
-                        stroke-linecap="round" stroke-width="2"
+                        strokeLinecap="round" stroke-width="2"
                         d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></span>
                       <div className="text-sm mr-2">
                         <div className="flex items-center">...
@@ -52,7 +52,7 @@ export default function Sentiment() {
                                              preserveAspectRatio="xMidYMid meet"
                                              className="h-6 w-6 p-1 ml-2"
                                              stroke="currentColor" fill="none"><path
-                              stroke-linecap="round" strokeLinejoin="round"
+                              strokeLinecap="round" strokeLinejoin="round"
                               stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></span>
                           </button>
                         </div>
