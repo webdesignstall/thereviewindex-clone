@@ -61,9 +61,10 @@ const WordCloud = () => {
     };
 
     return (
-        <Card>
+        <Card title={'Word Cloud'} className={'h-[480px] flex items-center justify-center'}>
             <CardContent>
-                <div className="flex flex-wrap gap-4 p-6 justify-center">
+                <p className={'text-2xl'}>Word Cloud</p>
+                <div className="flex flex-wrap gap-4 p-6 justify-center items-center">
                     {data.map((item, index) => (
                         <span
                             key={index}
